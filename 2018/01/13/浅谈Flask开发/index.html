@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Python操作Mysql数据库总结 | ben&#39;s blog</title>
+  <title>关于Flask开发 | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。">
+  <meta name="description" content="工作以来，做的最多的工作就是Flask开发，终于可以“理直气壮”的写篇关于Flask开发的博客了。本篇博客将以开发一个简单的在线图书馆系统为例，讲述Flask项目开发，当然也会穿插讲述一些JS用法。">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python操作Mysql数据库总结">
-<meta property="og:url" content="http://yoursite.com/2018/01/10/Python操作Mysql数据库/index.html">
+<meta property="og:title" content="关于Flask开发">
+<meta property="og:url" content="http://yoursite.com/2018/01/13/浅谈Flask开发/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。">
+<meta property="og:description" content="工作以来，做的最多的工作就是Flask开发，终于可以“理直气壮”的写篇关于Flask开发的博客了。本篇博客将以开发一个简单的在线图书馆系统为例，讲述Flask项目开发，当然也会穿插讲述一些JS用法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-09T16:19:26.498Z">
+<meta property="og:updated_time" content="2018-01-24T16:32:14.438Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python操作Mysql数据库总结">
-<meta name="twitter:description" content="最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。">
+<meta name="twitter:title" content="关于Flask开发">
+<meta name="twitter:description" content="工作以来，做的最多的工作就是Flask开发，终于可以“理直气壮”的写篇关于Flask开发的博客了。本篇博客将以开发一个简单的在线图书馆系统为例，讲述Flask项目开发，当然也会穿插讲述一些JS用法。">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -155,20 +155,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Python操作Mysql数据库" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-浅谈Flask开发" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Python操作Mysql数据库总结
+      关于Flask开发
     </h1>
   
 
         
-        <a href="/2018/01/10/Python操作Mysql数据库/" class="archive-article-date">
-  	<time datetime="2018-01-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
+        <a href="/2018/01/13/浅谈Flask开发/" class="archive-article-date">
+  	<time datetime="2018-01-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-13</time>
 </a>
         
       </header>
@@ -176,47 +176,56 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。</p>
+<p>工作以来，做的最多的工作就是Flask开发，终于可以“理直气壮”的写篇关于Flask开发的博客了。本篇博客将以开发一个简单的在线图书馆系统为例，讲述Flask项目开发，当然也会穿插讲述一些JS用法。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="连接Mysql数据库"><a href="#连接Mysql数据库" class="headerlink" title="连接Mysql数据库"></a>连接Mysql数据库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import MYSQLdb as mdb</div><div class="line">con = mdb.connect(&apos;localhost&apos;, &apos;name&apos;, &apos;password&apos;, &apos;databasename&apos;, charset=&apos;utf8&apos;)</div></pre></td></tr></table></figure>
-<h2 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cursor = con.cursor()</div><div class="line"></div><div class="line">sql = &quot;&quot;&quot;</div><div class="line">    create table if not exists users(</div><div class="line">    id int(11) not null auto_increment primary key,</div><div class="line">    name varchar(128),</div><div class="line">    teamid int(11),</div><div class="line">    constraint foreign key(teamid) references Teams(id)</div><div class="line">    )</div><div class="line">&quot;&quot;&quot;</div><div class="line">cursor.execute(sql)</div></pre></td></tr></table></figure>
-<h2 id="Mysql常用命令"><a href="#Mysql常用命令" class="headerlink" title="Mysql常用命令"></a>Mysql常用命令</h2><ol>
-<li>将某个.sql文件导入mysql数据库</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">create database 数据库名</div><div class="line">use 数据库名</div><div class="line">source /path/.sql</div></pre></td></tr></table></figure>
-<ol>
-<li><p>将mysql中某个数据库导出为.sql文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p 数据库名 &gt; 导出的文件名</div></pre></td></tr></table></figure>
+<p><a href="#first">开发初探</a><br><a href="#second">创建项目目录</a><br><a href="#third">使用数据库</a></p>
+<p>开发环境： ubuntu16.04 + Python2.7 + Flask + Mysql<br><span id="first"></span></p>
+<h2 id="开发初探"><a href="#开发初探" class="headerlink" title="开发初探"></a>开发初探</h2><p>或许你是一个Pythoner,或许你擅长别的语言。而我们的目标是搞懂Flask开发。开发讲究的是进阶，由简到繁，那么如何使用Flask开发完成一个最简单的应用呢？<br>创建app.py，编写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">from flask import Flask</div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line">@app.route(&apos;/&apos;)</div><div class="line">def hello_world():</div><div class="line">    return &apos;Hello Flask!&apos;</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    app.run()</div></pre></td></tr></table></figure></p>
+<p>使用命令python app.py，运行该脚本，便可实现了第一个小应用的编写。<br></p>
+<p><span id="second"></span></p>
+<h2 id="创建项目目录"><a href="#创建项目目录" class="headerlink" title="创建项目目录"></a>创建项目目录</h2><p>对于Web开发框架，很重要的一点就是创建项目目录，接下来我们以创建一个在线图书馆为例进行介绍。创建的目录为:</p>
+<ul>
+<li>library <ul>
+<li>library<ul>
+<li>templates （MVC中的V，存放html文件）</li>
+<li>static （存放静态文件，包括css和js文件等）</li>
+<li><strong>init</strong>.py （模块初始化文件）</li>
+<li>models.py(MVC中的M，映射数据库中表）</li>
+<li>views.py （MVC中的C，存放视图函数）</li>
+<li>config.py （配置文件）</li>
+</ul>
 </li>
-<li><p>将数据库中的文件导出为.excel文件<br>首先查询本机mysql导出的安全目录，使用命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show global variables like &apos;%secure%&apos;;</div></pre></td></tr></table></figure>
+<li>manage.py  （数据库迁移文件）</li>
+<li>serve.py （项目启动文件）</li>
+</ul>
 </li>
-</ol>
-<p>然后，切换到要导出的mysql数据库中，使用命令将其导出为.txt文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select name,email from users into outfile &apos;/var/lib/mysql-files/test.txt&apos;;</div></pre></td></tr></table></figure></p>
-<p>但是存入的mysql-fils一般是只有管理员才能打开的文件夹，这里需要切换权限。</p>
-<ol>
-<li><p>更新数据库中的某个字段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update table set name=&apos; &apos; where id = &apos; &apos;</div></pre></td></tr></table></figure>
-</li>
-<li><p>向数据库中的某个表中添加某个字段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">insert into user (userid,score) values (16,0);</div></pre></td></tr></table></figure>
-</li>
-<li><p>向已有的数据库表中，向固定的某个字段后添加一个字段：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter table tablename add id_name 类型 after 已有的字段</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter table team add userid varchar(11) after teamid</div></pre></td></tr></table></figure></p>
-<ol>
-<li><p>向数据库中已有的某个字段设置默认值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update tablename set 字段=0</div></pre></td></tr></table></figure>
-</li>
-<li><p>更改mysql数据库中字段的排列位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter table 表名 modify 字段一 数据类型  after 字段二</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>表示将字段一放置在字段二之后</p>
-<h2 id="遇到的问题总结"><a href="#遇到的问题总结" class="headerlink" title="遇到的问题总结"></a>遇到的问题总结</h2><p>关于数据库中文乱码的问题解决方案，将数据库中数据导入数据库中出现中文乱码的话，那很可能存在的一个问题就是编码不统一。<br>若编码不正确的话，那一定是编码的格式不够统一，对于中文，可以统一设置成utf-8编码。<br>需要注意的是，这里需同时将mysql配置文件处对应的客户端和服务端的编码格式进行修改。</p>
+</ul>
+<p>创建了项目目录之后，我们可以很清晰的看到整体的项目结构，可以看到，Flask也是按照MVC结构的，那么本节就将讲述如何使用MVC结构。</p>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><blockquote>
+<p>首先，需要介绍一下在Flask中很重要的一个概念：<strong>路由</strong>。所谓路由，就是处理URL和函数之间关系的程序，Flask中也是对URL规则进行统一管理的，使用@app.route修饰器将一个函数注册为路由。</p>
+</blockquote>
+<h3 id="蓝图"><a href="#蓝图" class="headerlink" title="蓝图"></a>蓝图</h3><blockquote>
+<p>编程讲究的是功能模块化，从而使代码看起来更加的优雅和顺畅。在开发在线图书馆功能时，有两种角色，一个是普通用户user，另一个是管理员admin，那么他们所拥有的权限和功能有很大差异，若将其放在同一个文件下，代码量相对较大，若进行版本控制时，也很容易出现冲突。<br>在Flask中，<strong>蓝图</strong>可以将各个应用组织成不同的组件，实现代码的模块化，这个具体怎么实现呢？</p>
+</blockquote>
+<p>首先，在views.py中创建蓝图：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># coding:utf-8</div><div class="line"></div><div class="line">views = Blueprint(&apos;views&apos;, __name__)</div></pre></td></tr></table></figure></p>
+<p>然后，在<strong>init</strong>.py初始化应用，并添加views蓝图：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#coding:utf-8</div><div class="line"></div><div class="line">from flask import Flask</div><div class="line">from views import views</div><div class="line"></div><div class="line">def create_app(config=&apos;dataanalysis.config.Config&apos;):</div><div class="line">    app = Flask(__name__)</div><div class="line">    app.register_blueprint(views)</div><div class="line"></div><div class="line">    return app</div></pre></td></tr></table></figure></p>
+<p>这样views蓝图被定义，使用views蓝图，打开views.py，编写视图函数定义路由：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@views.route(&apos;/&apos;)</div><div class="line">def index():</div><div class="line">    return &quot;Hello Flask&quot;</div></pre></td></tr></table></figure></p>
+<p>编写serve.py：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">from library import create_app</div><div class="line"></div><div class="line">app = create_app()</div><div class="line"></div><div class="line">if __name__==&apos;__main__&apos;:</div><div class="line">    app.run(debug=True, threaded=True, host=&quot;0.0.0.0&quot;, port=9008)</div></pre></td></tr></table></figure></p>
+<p>使用”python serve.py”命令运行该项目，便可在网页上显示”Hello Flask”。</p>
+<p>那么如何使用模板呢？<br>在views中，重新编写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># coding:utf-8</div><div class="line"></div><div class="line">from flask import render_template, Blueprint</div><div class="line"></div><div class="line">views = Blueprint(&apos;views&apos;, __name__)</div><div class="line"></div><div class="line">@views.route(&apos;/&apos;)</div><div class="line">def index():</div><div class="line">    return render_template(&apos;home.html&apos;)</div></pre></td></tr></table></figure></p>
+<p>可以看到这里，使用render_template()引入了前端文件’home.html’，运行”python serve.py”便可在网页中显示home.html中的内容。<br></p>
+<p><span id="third"></span></p>
+<h2 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h2><p>在Python中，一个最有名的的ORM框架就是SQLAlchemy，在Flask中，可以使用Flask-SQLAlchemy管理数据库，使用命令安装：<br><figure class="highlight plain"><figcaption><span>install flask-sqlalchemy```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">接下来使用MySQL数据库的使用为例。</div><div class="line">### 配置</div><div class="line">首先，需要在config.py中配置数据库：</div></pre></td></tr></table></figure></p>
+<p>#coding:utf-8</p>
+<p>import os<br>basedir = os.path.abspath(os.path.dirname(<strong>file</strong>))</p>
+<p>DEBUG = True<br>SQLALCHEMY_TRACK_MODIFICATIONS = False</p>
+<p>#mysql数据库连接信息<br>SQLALCHEMY_DATABASE_URI = os.environ.get(‘DATABASE_URL’)<br>SQLALCHEMY_TRACK_MODIFICATIONS = True</p>
+<p>BOOTSTRAP_SERVE_LOCAL = True<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">接下来，使用命令配置环境，这里以临时环境变量为例，创建library数据库:</div></pre></td></tr></table></figure></p>
+<p>export DATABASE_URL=”mysql://username:password@localhost/CTFD”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">接下来，在models.py中创建数据库映射表，上面提到过，本篇文章以实现一个在线图书馆为例，那就首先创建一个User表吧，假定包括用户名，密码，邮箱三个字段：</div></pre></td></tr></table></figure></p>
+<p>class Users(db.Model):<br>    id = db.Column(db.Integer, primary_key=True)<br>    name = db.Column(db.String(128), unique=True)<br>    email = db.Column(db.String(128))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">这样，我们就完成了Users表的映射，那么接下来，我们就可以使用数据库，完成在线图书馆的第一个功能-注册。</div><div class="line">### 注册功能的实现</div><div class="line">注册功能其实说白了就是将用户的信息填写的数据进行验证，并存入数据库。</div><div class="line">#### 创建视图函数</div><div class="line">这里我们通过编写对应的路由函数来实现，首先，这是用户相关的功能，为了体现模块化思想，我们创建user.py文件，用来编写用户相关的所有功能，并创建user蓝图，然后创建视图函数：</div></pre></td></tr></table></figure></p>
+<p>```</p>
+<p></p>
 
       
 
@@ -307,7 +316,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/10/Python操作Mysql数据库/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/13/浅谈Flask开发/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -321,18 +330,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/01/13/浅谈Flask开发/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          关于Flask开发
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/07/2017小结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2017小结</div>
+    <a href="/2018/01/10/Python操作Mysql数据库/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python操作Mysql数据库总结</div>
       <i class="icon-circle-right"></i>
     </a>
   
