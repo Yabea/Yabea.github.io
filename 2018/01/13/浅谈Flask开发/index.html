@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="ben&#39;s blog">
 <meta property="og:description" content="工作以来，做的最多的工作就是Flask开发，终于可以“理直气壮”的写篇关于Flask开发的博客了。本篇博客将以开发一个简单的在线图书馆系统为例，讲述Flask项目开发，当然也会穿插讲述一些JS用法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-25T10:08:07.277Z">
+<meta property="og:updated_time" content="2018-01-25T15:48:23.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Flask开发">
 <meta name="twitter:description" content="工作以来，做的最多的工作就是Flask开发，终于可以“理直气壮”的写篇关于Flask开发的博客了。本篇博客将以开发一个简单的在线图书馆系统为例，讲述Flask项目开发，当然也会穿插讲述一些JS用法。">
@@ -30,7 +30,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+      background: linear-gradient(200deg,#9BE4D8,#e8c37e);
     }
   </style>
   
@@ -44,17 +44,17 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #9BE4D8"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="avatar.gif" class="js-avatar">
+			<img src="/img/myavatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">oYabea</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">多读书 | 多思考 | 热爱生活</p>
+		<p class="header-subtitle">多读书 | 多思考 | 多总结</p>
 		
 
 		<nav class="header-menu">
@@ -97,20 +97,20 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #9BE4D8"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="avatar.gif" class="js-avatar">
+				<img src="/img/myavatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">oYabea</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>多读书 | 多思考 | 热爱生活<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>多读书 | 多思考 | 多总结<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -227,33 +227,12 @@
 <p>接下来，在models.py中创建数据库映射表，上面提到过，本篇文章以实现一个在线图书馆为例，那就首先创建一个User表吧，假定包括用户名，密码，邮箱三个字段：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class Users(db.Model):</div><div class="line">    id = db.Column(db.Integer, primary_key=True)</div><div class="line">    name = db.Column(db.String(128), unique=True)</div><div class="line">    email = db.Column(db.String(128))</div></pre></td></tr></table></figure>
 <p>这样，我们就完成了Users表的映射，那么接下来，我们就可以使用数据库，完成在线图书馆的第一个功能-注册。</p>
-<h3 id="注册功能的实现"><a href="#注册功能的实现" class="headerlink" title="注册功能的实现"></a>注册功能的实现</h3><p>注册功能其实说白了就是将用户的信息填写的数据进行验证，并存入数据库。</p>
+<h3 id="注册功能的实现"><a href="#注册功能的实现" class="headerlink" title="注册功能的实现"></a>注册功能的实现</h3><p>注册功能简单说就是将用户的信息填写的数据进行验证，并存入数据库。</p>
 <h4 id="创建视图函数"><a href="#创建视图函数" class="headerlink" title="创建视图函数"></a>创建视图函数</h4><p>这里我们通过编写对应的路由函数来实现，首先，这是用户相关的功能，为了体现模块化思想，我们创建user.py文件，用来编写用户相关的所有功能，并创建user蓝图，然后创建视图函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
 <p></p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -355,6 +334,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开发初探"><span class="toc-number">1.</span> <span class="toc-text">开发初探</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建项目目录"><span class="toc-number">2.</span> <span class="toc-text">创建项目目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#路由"><span class="toc-number">2.1.</span> <span class="toc-text">路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#蓝图"><span class="toc-number">2.2.</span> <span class="toc-text">蓝图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用数据库"><span class="toc-number">3.</span> <span class="toc-text">使用数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-number">3.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注册功能的实现"><span class="toc-number">3.2.</span> <span class="toc-text">注册功能的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建视图函数"><span class="toc-number">3.2.1.</span> <span class="toc-text">创建视图函数</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
