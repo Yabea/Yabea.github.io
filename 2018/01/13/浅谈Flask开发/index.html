@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="ben&#39;s blog">
 <meta property="og:description" content="工作以来，做的最多的工作就是Flask开发，终于可以“理直气壮”的写篇关于Flask开发的博客了。本篇博客将以开发一个简单的在线图书馆系统为例，讲述Flask项目开发，当然也会穿插讲述一些JS用法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-25T10:04:34.239Z">
+<meta property="og:updated_time" content="2018-01-25T10:06:24.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Flask开发">
 <meta name="twitter:description" content="工作以来，做的最多的工作就是Flask开发，终于可以“理直气壮”的写篇关于Flask开发的博客了。本篇博客将以开发一个简单的在线图书馆系统为例，讲述Flask项目开发，当然也会穿插讲述一些JS用法。">
@@ -218,15 +218,17 @@
 <p>那么如何使用模板呢？<br>在views中，重新编写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># coding:utf-8</div><div class="line"></div><div class="line">from flask import render_template, Blueprint</div><div class="line"></div><div class="line">views = Blueprint(&apos;views&apos;, __name__)</div><div class="line"></div><div class="line">@views.route(&apos;/&apos;)</div><div class="line">def index():</div><div class="line">    return render_template(&apos;home.html&apos;)</div></pre></td></tr></table></figure></p>
 <p>可以看到这里，使用render_template()引入了前端文件’home.html’，运行”python serve.py”便可在网页中显示home.html中的内容。<br></p>
 <p><span id="third"></span></p>
-<h2 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h2><p>在Python中，一个最有名的的ORM框架就是SQLAlchemy，在Flask中，可以使用Flask-SQLAlchemy管理数据库，使用命令安装：<br><figure class="highlight plain"><figcaption><span>install flask-sqlalchemy```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">接下来使用MySQL数据库的使用为例。</div><div class="line">### 配置</div><div class="line">首先，需要在config.py中配置数据库：</div></pre></td></tr></table></figure></p>
-<p>#coding:utf-8</p>
-<p>import os<br>basedir = os.path.abspath(os.path.dirname(<strong>file</strong>))</p>
-<p>DEBUG = True<br>SQLALCHEMY_TRACK_MODIFICATIONS = False</p>
-<p>#mysql数据库连接信息<br>SQLALCHEMY_DATABASE_URI = os.environ.get(‘DATABASE_URL’)<br>SQLALCHEMY_TRACK_MODIFICATIONS = True</p>
-<p>BOOTSTRAP_SERVE_LOCAL = True<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">接下来，使用命令配置环境，这里以临时环境变量为例，创建library数据库:</div></pre></td></tr></table></figure></p>
-<p>export DATABASE_URL=”mysql://username:password@localhost/CTFD”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">接下来，在models.py中创建数据库映射表，上面提到过，本篇文章以实现一个在线图书馆为例，那就首先创建一个User表吧，假定包括用户名，密码，邮箱三个字段：</div></pre></td></tr></table></figure></p>
-<p>class Users(db.Model):<br>    id = db.Column(db.Integer, primary_key=True)<br>    name = db.Column(db.String(128), unique=True)<br>    email = db.Column(db.String(128))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这样，我们就完成了Users表的映射，那么接下来，我们就可以使用数据库，完成在线图书馆的第一个功能-注册。</div><div class="line">### 注册功能的实现</div><div class="line">注册功能其实说白了就是将用户的信息填写的数据进行验证，并存入数据库。</div><div class="line">#### 创建视图函数</div><div class="line">这里我们通过编写对应的路由函数来实现，首先，这是用户相关的功能，为了体现模块化思想，我们创建user.py文件，用来编写用户相关的所有功能，并创建user蓝图，然后创建视图函数：</div></pre></td></tr></table></figure></p>
-<p>```</p>
+<h2 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h2><p>在Python中，一个最有名的的ORM框架就是SQLAlchemy，在Flask中，可以使用Flask-SQLAlchemy管理数据库，使用命令安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install flask-sqlalchemy</div></pre></td></tr></table></figure></p>
+<p>接下来使用MySQL数据库的使用为例。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>首先，需要在config.py中配置数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#coding:utf-8</div><div class="line"></div><div class="line">import os</div><div class="line">basedir = os.path.abspath(os.path.dirname(__file__))</div><div class="line"></div><div class="line">DEBUG = True</div><div class="line">SQLALCHEMY_TRACK_MODIFICATIONS = False</div><div class="line"></div><div class="line">#mysql数据库连接信息</div><div class="line">SQLALCHEMY_DATABASE_URI = os.environ.get(&apos;DATABASE_URL&apos;)</div><div class="line">SQLALCHEMY_TRACK_MODIFICATIONS = True</div><div class="line"></div><div class="line">BOOTSTRAP_SERVE_LOCAL = True</div></pre></td></tr></table></figure>
+<p>接下来，使用命令配置环境，这里以临时环境变量为例，创建library数据库:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export DATABASE_URL=&quot;mysql://username:password@localhost/CTFD&quot;</div></pre></td></tr></table></figure>
+<p>接下来，在models.py中创建数据库映射表，上面提到过，本篇文章以实现一个在线图书馆为例，那就首先创建一个User表吧，假定包括用户名，密码，邮箱三个字段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class Users(db.Model):</div><div class="line">    id = db.Column(db.Integer, primary_key=True)</div><div class="line">    name = db.Column(db.String(128), unique=True)</div><div class="line">    email = db.Column(db.String(128))</div></pre></td></tr></table></figure>
+<p>这样，我们就完成了Users表的映射，那么接下来，我们就可以使用数据库，完成在线图书馆的第一个功能-注册。</p>
+<h3 id="注册功能的实现"><a href="#注册功能的实现" class="headerlink" title="注册功能的实现"></a>注册功能的实现</h3><p>注册功能其实说白了就是将用户的信息填写的数据进行验证，并存入数据库。</p>
+<h4 id="创建视图函数"><a href="#创建视图函数" class="headerlink" title="创建视图函数"></a>创建视图函数</h4><p>这里我们通过编写对应的路由函数来实现，首先，这是用户相关的功能，为了体现模块化思想，我们创建user.py文件，用来编写用户相关的所有功能，并创建user蓝图，然后创建视图函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
 <p></p>
 
       
@@ -459,10 +461,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Python Flask 前端</a>
               </li>
             
             <div class="clearfix"></div>
