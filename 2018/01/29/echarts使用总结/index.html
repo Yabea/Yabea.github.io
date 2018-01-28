@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/1 | ben&#39;s blog</title>
+  <title>echarts使用总结 | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个不太正确的人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ben&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/01/index.html">
+  <meta name="description" content="项目中需要实现数据可视化，在前辈的推荐之下，最终选取了echarts来实现，在此关于echarts的使用进行总结，最终代码分享至我的github。">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="echarts使用总结">
+<meta property="og:url" content="http://yoursite.com/2018/01/29/echarts使用总结/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="一个不太正确的人">
+<meta property="og:description" content="项目中需要实现数据可视化，在前辈的推荐之下，最终选取了echarts来实现，在此关于echarts的使用进行总结，最终代码分享至我的github。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-28T16:33:01.232Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ben&#39;s blog">
-<meta name="twitter:description" content="一个不太正确的人">
+<meta name="twitter:title" content="echarts使用总结">
+<meta name="twitter:description" content="项目中需要实现数据可视化，在前辈的推荐之下，最终选取了echarts来实现，在此关于echarts的使用进行总结，最终代码分享至我的github。">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -153,36 +155,50 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-echarts使用总结" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/29/echarts使用总结/" class="archive-article-date">
-  	<time datetime="2018-01-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/29/echarts使用总结/">echarts使用总结</a>
+    <h1 class="article-title" itemprop="name">
+      echarts使用总结
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/01/29/echarts使用总结/" class="archive-article-date">
+  	<time datetime="2018-01-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>项目中需要实现数据可视化，在前辈的推荐之下，最终选取了echarts来实现，在此关于echarts的使用进行总结，最终代码分享至<a href="https://github.com/Yabea/front/tree/master/learn%20echarts" target="_blank" rel="external">我的github</a>。</p>
+<a id="more"></a>
+<h2 id="关于echarts"><a href="#关于echarts" class="headerlink" title="关于echarts"></a>关于echarts</h2><p>echarts是百度推出的，使用JavaScript实现的开源可视化库，可以提供直观、可定制化的数据可视化图表，包括折线图、柱状图、散点图、地图和饼图等，<a href="http://echarts.baidu.com/" target="_blank" rel="external">点击跳转主页</a>。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>使用之前先谈需求：使用echarts的话，需求基本上都是为了实现数据可视化，那么数据可视化牵扯到一个怎么展示的问题，就echarts功能而言，展示将通过可视化图表进行，也就是，这里的需求可归为将某数据使用echarts以图表（假定为柱状图）的形式呈现。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>一般情况，我会直接打开<a href="http://echarts.baidu.com/examples/index.html" target="_blank" rel="external">echart官方实例</a>, 选取相应的实例，我们以最简单的<a href="http://echarts.baidu.com/examples/editor.html?c=line-simple" target="_blank" rel="external">折线图</a>为例。可以看到对应的JS代码为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">option = &#123;</div><div class="line">    xAxis: &#123;</div><div class="line">        type: &apos;category&apos;,</div><div class="line">        data: [&apos;Mon&apos;, &apos;Tue&apos;, &apos;Wed&apos;, &apos;Thu&apos;, &apos;Fri&apos;, &apos;Sat&apos;, &apos;Sun&apos;]</div><div class="line">    &#125;,</div><div class="line">    yAxis: &#123;</div><div class="line">        type: &apos;value&apos;</div><div class="line">    &#125;,</div><div class="line">    series: [&#123;</div><div class="line">        data: [820, 932, 901, 934, 1290, 1330, 1320],</div><div class="line">        type: &apos;line&apos;</div><div class="line">    &#125;]</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>那么，这里的各种变量分别代表的是什么含义呢？当然可以在此修改部分数据，查看折线图的变化，echarts图形化的呈现是通过setOption配置方法来实现的，<a href="http://echarts.baidu.com/option.html#title" target="_blank" rel="external">点击详情</a>，这里对各种配置做出详尽的介绍。</p>
+<h3 id="简单实例"><a href="#简单实例" class="headerlink" title="简单实例"></a>简单实例</h3><p>那么在日常开发环境中如何实现呢？<br>首先，创建first.html文件，并编写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;echarts使用&lt;/title&gt;  </div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</div><div class="line">    &lt;script src=&quot;js/echarts.min.js&quot;&gt;&lt;/script&gt; </div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"> 	&lt;div class=&quot;content&quot;&gt;</div><div class="line"> 		&lt;div class=&quot;title&quot;&gt;</div><div class="line"> 			echarts使用案例</div><div class="line"> 		&lt;/div&gt;</div><div class="line"> 		&lt;div class=&quot;chart&quot;&gt;</div><div class="line"> 			&lt;div id=&quot;firstchart&quot;&gt;</div><div class="line">	 		&lt;/div&gt;</div><div class="line"> 		&lt;/div&gt;</div><div class="line"> 	&lt;/div&gt;</div><div class="line"></div><div class="line"> &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line"> 	var myChart = echarts.init(document.getElementById(&apos;firstchart&apos;));</div><div class="line">	var option = &#123;</div><div class="line">		title: &#123;</div><div class="line">            text: &apos;一周温度变化&apos;,</div><div class="line">            left: &apos;center&apos;,</div><div class="line">            top: &apos;1%&apos;,</div><div class="line">            textStyle: &#123;</div><div class="line">                color: &apos;white&apos;,</div><div class="line">                fontSize:16,</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">	    xAxis: &#123;</div><div class="line">	        type: &apos;category&apos;,</div><div class="line">	        data: [&apos;星期一&apos;, &apos;星期二&apos;, &apos;星期三&apos;, &apos;星期四&apos;, &apos;星期五&apos;, &apos;星期六&apos;, &apos;星期天&apos;],</div><div class="line">	        axisTick: &#123;</div><div class="line">                alignWithLabel: true</div><div class="line">            &#125;,</div><div class="line">            axisLine:&#123;</div><div class="line">                lineStyle: &#123;</div><div class="line">                    color:&apos;white&apos;,</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">	    &#125;,</div><div class="line"></div><div class="line">	    yAxis: &#123;</div><div class="line">	        type: &apos;value&apos;,</div><div class="line">	        axisTick: &#123;</div><div class="line">                alignWithLabel: true</div><div class="line">            &#125;,</div><div class="line">            axisLine:&#123;</div><div class="line">                lineStyle: &#123;</div><div class="line">                    color:&apos;white&apos;,</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">	    &#125;,</div><div class="line">	    series: [&#123;</div><div class="line">	        data: [11, 12, 15, 5, 8, 14, 9],</div><div class="line">	        type: &apos;line&apos;</div><div class="line">	    &#125;]</div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	myChart.setOption(option);</div><div class="line"> &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>编写对应的css样式文件，打开浏览器就可看到对应的折线图。</p>
+<h3 id="定制"><a href="#定制" class="headerlink" title="定制"></a>定制</h3><p>在平时的使用中，其它需求势必存在，而echarts本身也提供了这种定制化配置。下面关于一些常见需求举例说明：</p>
+<h3 id="添加图注"><a href="#添加图注" class="headerlink" title="添加图注"></a>添加图注</h3><p>就上述折线图而言，气温变化一般可分为最高温度变化和最低温度变化，也就意味着会有两条折线。为了更直观表现，这里可使用图注来说明,在配置项中legend属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">legend:&#123;</div><div class="line">	right:0,</div><div class="line">    top:3,</div><div class="line">    textStyle:&#123;</div><div class="line">        fontSize:12,</div><div class="line">        color:&apos;#FFF&apos;,</div><div class="line">    &#125;,</div><div class="line">    data:[&apos;最高温度变化&apos;]</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<p>并设置了图注属性。</p>
+<h3 id="将坐标名旋转"><a href="#将坐标名旋转" class="headerlink" title="将坐标名旋转"></a>将坐标名旋转</h3><p>有时，由于图标可占用的空间有限，加之，坐标名字符较长，就导致坐标名显示不全的情况，这时候，可以将做表明改为斜体展示（旋转角度），通过在xAxis中添加axisLabel属性来实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">xAxis : [</div><div class="line">    &#123;</div><div class="line">    axisLabel:&#123;</div><div class="line">        interval:0,</div><div class="line">        rotate:45,//倾斜度 -90 至 90 默认为0</div><div class="line">        &#125;,</div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h3 id="设置坐标网格背景"><a href="#设置坐标网格背景" class="headerlink" title="设置坐标网格背景"></a>设置坐标网格背景</h3><p>为了界面的美观，可以在图表中绘制网格，并设置网格背景。首先，在xAxis下添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">splitLine:&#123;</div><div class="line">    show:true,</div><div class="line">    lineStyle:&#123;</div><div class="line">        color: &apos;white&apos;,</div><div class="line">        width:1,</div><div class="line">        type: &apos;solid&apos;</div><div class="line">    &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<p>这样，绘制了网格，然后，在yAxis中添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">splitArea:&#123;</div><div class="line">    show:true,</div><div class="line">    areaStyle:&#123;</div><div class="line">        color:[&apos;#6a6f71&apos;, &apos;#5b6062&apos;],</div><div class="line">    &#125;,</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<p>即可实现网格背景。</p>
+<p>以上。<br>本文将持续更新。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -194,133 +210,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/29/echarts使用总结/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/13/浅谈Flask开发/" class="archive-article-date">
-  	<time datetime="2018-01-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-13</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/13/浅谈Flask开发/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于Flask开发</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/13/浅谈Flask开发/">关于Flask开发</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于echarts"><span class="toc-number">1.</span> <span class="toc-text">关于echarts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#需求"><span class="toc-number">2.1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现"><span class="toc-number">2.2.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单实例"><span class="toc-number">2.3.</span> <span class="toc-text">简单实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定制"><span class="toc-number">2.4.</span> <span class="toc-text">定制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加图注"><span class="toc-number">2.5.</span> <span class="toc-text">添加图注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将坐标名旋转"><span class="toc-number">2.6.</span> <span class="toc-text">将坐标名旋转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置坐标网格背景"><span class="toc-number">2.7.</span> <span class="toc-text">设置坐标网格背景</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/10/Python操作Mysql数据库/" class="archive-article-date">
-  	<time datetime="2018-01-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/10/Python操作Mysql数据库/">Python操作Mysql数据库总结</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/07/2017小结/" class="archive-article-date">
-  	<time datetime="2018-01-06T17:02:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/07/2017小结/">2017小结</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -345,8 +347,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
