@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Python操作Mysql数据库总结 | ben&#39;s blog</title>
+  <title>Archives: 2018/2 | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。">
-<meta name="keywords" content="Python">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Python操作Mysql数据库总结">
-<meta property="og:url" content="http://yoursite.com/2018/01/10/Python操作Mysql数据库/index.html">
+  <meta name="description" content="一个不太正确的人">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ben&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/archives/2018/02/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。">
+<meta property="og:description" content="一个不太正确的人">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-09T16:19:26.498Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python操作Mysql数据库总结">
-<meta name="twitter:description" content="最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。">
+<meta name="twitter:title" content="ben&#39;s blog">
+<meta name="twitter:description" content="一个不太正确的人">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -155,196 +153,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Python操作Mysql数据库" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Python操作Mysql数据库总结
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/02/06/书摘/" class="archive-article-date">
+  	<time datetime="2018-02-06T15:39:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-06</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/02/06/书摘/">2017年终总结</a>
     </h1>
   
 
-        
-        <a href="/2018/01/10/Python操作Mysql数据库/" class="archive-article-date">
-  	<time datetime="2018-01-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="连接Mysql数据库"><a href="#连接Mysql数据库" class="headerlink" title="连接Mysql数据库"></a>连接Mysql数据库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import MYSQLdb as mdb</div><div class="line">con = mdb.connect(&apos;localhost&apos;, &apos;name&apos;, &apos;password&apos;, &apos;databasename&apos;, charset=&apos;utf8&apos;)</div></pre></td></tr></table></figure>
-<h2 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cursor = con.cursor()</div><div class="line"></div><div class="line">sql = &quot;&quot;&quot;</div><div class="line">    create table if not exists users(</div><div class="line">    id int(11) not null auto_increment primary key,</div><div class="line">    name varchar(128),</div><div class="line">    teamid int(11),</div><div class="line">    constraint foreign key(teamid) references Teams(id)</div><div class="line">    )</div><div class="line">&quot;&quot;&quot;</div><div class="line">cursor.execute(sql)</div></pre></td></tr></table></figure>
-<h2 id="Mysql常用命令"><a href="#Mysql常用命令" class="headerlink" title="Mysql常用命令"></a>Mysql常用命令</h2><ol>
-<li>将某个.sql文件导入mysql数据库</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">create database 数据库名</div><div class="line">use 数据库名</div><div class="line">source /path/.sql</div></pre></td></tr></table></figure>
-<ol>
-<li><p>将mysql中某个数据库导出为.sql文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p 数据库名 &gt; 导出的文件名</div></pre></td></tr></table></figure>
-</li>
-<li><p>将数据库中的文件导出为.excel文件<br>首先查询本机mysql导出的安全目录，使用命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show global variables like &apos;%secure%&apos;;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>然后，切换到要导出的mysql数据库中，使用命令将其导出为.txt文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select name,email from users into outfile &apos;/var/lib/mysql-files/test.txt&apos;;</div></pre></td></tr></table></figure></p>
-<p>但是存入的mysql-fils一般是只有管理员才能打开的文件夹，这里需要切换权限。</p>
-<ol>
-<li><p>更新数据库中的某个字段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update table set name=&apos; &apos; where id = &apos; &apos;</div></pre></td></tr></table></figure>
-</li>
-<li><p>向数据库中的某个表中添加某个字段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">insert into user (userid,score) values (16,0);</div></pre></td></tr></table></figure>
-</li>
-<li><p>向已有的数据库表中，向固定的某个字段后添加一个字段：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter table tablename add id_name 类型 after 已有的字段</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter table team add userid varchar(11) after teamid</div></pre></td></tr></table></figure></p>
-<ol>
-<li><p>向数据库中已有的某个字段设置默认值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update tablename set 字段=0</div></pre></td></tr></table></figure>
-</li>
-<li><p>更改mysql数据库中字段的排列位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter table 表名 modify 字段一 数据类型  after 字段二</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>表示将字段一放置在字段二之后</p>
-<h2 id="遇到的问题总结"><a href="#遇到的问题总结" class="headerlink" title="遇到的问题总结"></a>遇到的问题总结</h2><p>关于数据库中文乱码的问题解决方案，将数据库中数据导入数据库中出现中文乱码的话，那很可能存在的一个问题就是编码不统一。<br>若编码不正确的话，那一定是编码的格式不够统一，对于中文，可以统一设置成utf-8编码。<br>需要注意的是，这里需同时将mysql配置文件处对应的客户端和服务端的编码格式进行修改。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">阅读</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/10/Python操作Mysql数据库/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/01/13/浅谈Flask开发/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          关于Flask开发
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/01/07/2017小结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2017年终总结</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -369,8 +231,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
