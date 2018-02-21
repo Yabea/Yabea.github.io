@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Python操作Mysql数据库总结 | ben&#39;s blog</title>
+  <title>Flask开发之实现验证码功能 | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。">
+  <meta name="description" content="在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?   编写验证码的步骤：  获取验证码（字母+数字）； 获取验证码图片； 将验证码图片显示于网页； 点击验证码图片刷新。">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python操作Mysql数据库总结">
-<meta property="og:url" content="http://yoursite.com/2018/01/10/Python操作Mysql数据库/index.html">
+<meta property="og:title" content="Flask开发之实现验证码功能">
+<meta property="og:url" content="http://yoursite.com/2018/02/20/Flask开发之实现验证码功能/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。">
+<meta property="og:description" content="在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?   编写验证码的步骤：  获取验证码（字母+数字）； 获取验证码图片； 将验证码图片显示于网页； 点击验证码图片刷新。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-09T16:19:26.498Z">
+<meta property="og:image" content="http://pic.suiyiyun.cn/598203/blog/verficode.jpeg">
+<meta property="og:updated_time" content="2018-02-21T14:59:08.900Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python操作Mysql数据库总结">
-<meta name="twitter:description" content="最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。">
+<meta name="twitter:title" content="Flask开发之实现验证码功能">
+<meta name="twitter:description" content="在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?   编写验证码的步骤：  获取验证码（字母+数字）； 获取验证码图片； 将验证码图片显示于网页； 点击验证码图片刷新。">
+<meta name="twitter:image" content="http://pic.suiyiyun.cn/598203/blog/verficode.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -155,20 +157,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Python操作Mysql数据库" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Flask开发之实现验证码功能" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Python操作Mysql数据库总结
+      Flask开发之实现验证码功能
     </h1>
   
 
         
-        <a href="/2018/01/10/Python操作Mysql数据库/" class="archive-article-date">
-  	<time datetime="2018-01-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
+        <a href="/2018/02/20/Flask开发之实现验证码功能/" class="archive-article-date">
+  	<time datetime="2018-02-20T10:02:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-20</time>
 </a>
         
       </header>
@@ -176,47 +178,25 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。</p>
+<p>在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?</p>
 </blockquote>
+<p><img src="http://pic.suiyiyun.cn/598203/blog/verficode.jpeg" alt="alt text" title="验证码"></p>
+<p>编写验证码的步骤：</p>
+<ol>
+<li>获取验证码（字母+数字）；</li>
+<li>获取验证码图片；</li>
+<li>将验证码图片显示于网页；</li>
+<li>点击验证码图片刷新。</li>
+</ol>
 <a id="more"></a>
-<h2 id="连接Mysql数据库"><a href="#连接Mysql数据库" class="headerlink" title="连接Mysql数据库"></a>连接Mysql数据库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import MYSQLdb as mdb</div><div class="line">con = mdb.connect(&apos;localhost&apos;, &apos;name&apos;, &apos;password&apos;, &apos;databasename&apos;, charset=&apos;utf8&apos;)</div></pre></td></tr></table></figure>
-<h2 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cursor = con.cursor()</div><div class="line"></div><div class="line">sql = &quot;&quot;&quot;</div><div class="line">    create table if not exists users(</div><div class="line">    id int(11) not null auto_increment primary key,</div><div class="line">    name varchar(128),</div><div class="line">    teamid int(11),</div><div class="line">    constraint foreign key(teamid) references Teams(id)</div><div class="line">    )</div><div class="line">&quot;&quot;&quot;</div><div class="line">cursor.execute(sql)</div></pre></td></tr></table></figure>
-<h2 id="Mysql常用命令"><a href="#Mysql常用命令" class="headerlink" title="Mysql常用命令"></a>Mysql常用命令</h2><ol>
-<li>将某个.sql文件导入mysql数据库</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">create database 数据库名</div><div class="line">use 数据库名</div><div class="line">source /path/.sql</div></pre></td></tr></table></figure>
-<ol>
-<li><p>将mysql中某个数据库导出为.sql文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p 数据库名 &gt; 导出的文件名</div></pre></td></tr></table></figure>
-</li>
-<li><p>将数据库中的文件导出为.excel文件<br>首先查询本机mysql导出的安全目录，使用命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show global variables like &apos;%secure%&apos;;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>然后，切换到要导出的mysql数据库中，使用命令将其导出为.txt文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select name,email from users into outfile &apos;/var/lib/mysql-files/test.txt&apos;;</div></pre></td></tr></table></figure></p>
-<p>但是存入的mysql-fils一般是只有管理员才能打开的文件夹，这里需要切换权限。</p>
-<ol>
-<li><p>更新数据库中的某个字段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update table set name=&apos; &apos; where id = &apos; &apos;</div></pre></td></tr></table></figure>
-</li>
-<li><p>向数据库中的某个表中添加某个字段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">insert into user (userid,score) values (16,0);</div></pre></td></tr></table></figure>
-</li>
-<li><p>向已有的数据库表中，向固定的某个字段后添加一个字段：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter table tablename add id_name 类型 after 已有的字段</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter table team add userid varchar(11) after teamid</div></pre></td></tr></table></figure></p>
-<ol>
-<li><p>向数据库中已有的某个字段设置默认值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update tablename set 字段=0</div></pre></td></tr></table></figure>
-</li>
-<li><p>更改mysql数据库中字段的排列位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter table 表名 modify 字段一 数据类型  after 字段二</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>表示将字段一放置在字段二之后</p>
-<h2 id="遇到的问题总结"><a href="#遇到的问题总结" class="headerlink" title="遇到的问题总结"></a>遇到的问题总结</h2><p>关于数据库中文乱码的问题解决方案，将数据库中数据导入数据库中出现中文乱码的话，那很可能存在的一个问题就是编码不统一。<br>若编码不正确的话，那一定是编码的格式不够统一，对于中文，可以统一设置成utf-8编码。<br>需要注意的是，这里需同时将mysql配置文件处对应的客户端和服务端的编码格式进行修改。</p>
+<h3 id="获取验证码"><a href="#获取验证码" class="headerlink" title="获取验证码"></a>获取验证码</h3><p>Flask是Python的web开发框架之一，这一部分使用Python编写，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">codenum = 4</div><div class="line">source = list(string.letters)</div><div class="line">for index in range(0, 10):</div><div class="line">    source.append(str(index))</div><div class="line">code = &apos;&apos;.join(random.sample(source, 4))</div></pre></td></tr></table></figure></p>
+<h3 id="获取验证码图片"><a href="#获取验证码图片" class="headerlink" title="获取验证码图片"></a>获取验证码图片</h3><p>这里使用Python中的PIL库绘制，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"># 设置图片大小</div><div class="line">width = 45 * 5</div><div class="line">height = 50</div><div class="line">image = Image.new(&apos;RGB&apos;, (width, height), (255, 255, 255))</div><div class="line">#选择字体</div><div class="line">font = ImageFont.truetype(&apos;Arial.ttf&apos;, 36)</div><div class="line">draw = ImageDraw.Draw(image)</div><div class="line"></div><div class="line">for x in range(width):</div><div class="line">    for y in range(height):</div><div class="line">        colorRandom1 = (random.randint(255, 255), random.randint(255, 255), random.randint(255, 255))</div><div class="line">        draw.point((x, y), fill=colorRandom1)</div><div class="line"></div><div class="line">    for t in range(codenum):</div><div class="line">        colorRandom2 = (random.randint(85, 155), random.randint(85, 155), random.randint(85, 155))</div><div class="line">        draw.text((45 * t + 25, 10), code[t], font=font, fill=colorRandom2)</div><div class="line">image_d = ImageDraw.Draw(image)</div><div class="line">for i in range(5):</div><div class="line">    colorRandom3 = (random.randint(85, 100), random.randint(85, 100), random.randint(85, 100))</div><div class="line">    begin = (random.randint(0, width), random.randint(0, height))</div><div class="line">    end = (random.randint(0, width), random.randint(0, height))</div><div class="line">    image_d.line([begin, end], fill=colorRandom3)</div></pre></td></tr></table></figure></p>
+<p>得到了验证码图片之后，就要考虑一个问题，如何保存验证码图片的问题，最简单的方法当然就是将其保存于文件中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">image = image.save(&apos;/路径&apos; + code +&apos;.jpg&apos;)</div></pre></td></tr></table></figure></p>
+<p>但是，保存到文件中导致占用的空间过大，那么如何解决呢？stringio库可以实现将文件保存于内存中，而不是磁盘中，在本次代码编写中，使用比stringio更快的cstringio来进行实现，将上述代码中保存于文件的代码片段进行替换：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import cStringIO</div><div class="line">    tmps = cStringIO.StringIO()</div><div class="line">    image.save(tmps, &quot;jpeg&quot;)</div><div class="line">    res = Response()</div><div class="line">    res.headers.set(&quot;Content-Type&quot;, &quot;image/JPEG;charset=UTF-8&quot;)</div><div class="line">    res.set_data(tmps.getvalue())</div><div class="line">    return res</div></pre></td></tr></table></figure></p>
+<h3 id="将验证码显示于网页"><a href="#将验证码显示于网页" class="headerlink" title="将验证码显示于网页"></a>将验证码显示于网页</h3><p>接下来，就是最重要的一部分了，需要将得到的验证码显示于网页。因为是img标签，所以肯定是需要src属性，刚开始不熟悉，总觉得需要src后面需要添加图片的路径，而采用图片流的方式返回的不是图片，该怎么处理呢？在这里，将上述得到验证码图片的代码定义为一个路由，在前端的<img>标签中调用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img id=&quot;verficode&quot; src=&quot;./verficode&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>即可实现调用。</p>
+<h3 id="点击验证码刷新"><a href="#点击验证码刷新" class="headerlink" title="点击验证码刷新"></a>点击验证码刷新</h3><p>点击验证码刷新属于前端的内容了，需要在img标签中添加onclick属性，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img id=&quot;verficode&quot; src=&quot;./verficode&quot; onclick=&quot;window.location.reload()&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>上述代码，即可实现验证码的显示。</p>
 
       
 
@@ -286,7 +266,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/10/Python操作Mysql数据库/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/02/20/Flask开发之实现验证码功能/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -300,18 +280,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/01/13/浅谈Flask开发/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          关于Flask开发
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/07/2017小结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2017年终总结</div>
+    <a href="/2018/02/20/toc- true/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Flask开发之实现验证码功能</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -330,6 +301,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取验证码"><span class="toc-number">1.</span> <span class="toc-text">获取验证码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取验证码图片"><span class="toc-number">2.</span> <span class="toc-text">获取验证码图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将验证码显示于网页"><span class="toc-number">3.</span> <span class="toc-text">将验证码显示于网页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#点击验证码刷新"><span class="toc-number">4.</span> <span class="toc-text">点击验证码刷新</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
