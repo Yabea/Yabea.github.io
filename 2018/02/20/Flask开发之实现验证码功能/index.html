@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | ben&#39;s blog</title>
+  <title>Flask开发之实现验证码功能 | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个不太正确的人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ben&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?  编写验证码的步骤：  获取验证码（字母+数字）； 获取验证码图片； 将验证码图片显示于网页； 点击验证码图片刷新。">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flask开发之实现验证码功能">
+<meta property="og:url" content="http://yoursite.com/2018/02/20/Flask开发之实现验证码功能/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="一个不太正确的人">
+<meta property="og:description" content="在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?  编写验证码的步骤：  获取验证码（字母+数字）； 获取验证码图片； 将验证码图片显示于网页； 点击验证码图片刷新。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-02-22T13:18:44.214Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ben&#39;s blog">
-<meta name="twitter:description" content="一个不太正确的人">
+<meta name="twitter:title" content="Flask开发之实现验证码功能">
+<meta name="twitter:description" content="在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?  编写验证码的步骤：  获取验证码（字母+数字）； 获取验证码图片； 将验证码图片显示于网页； 点击验证码图片刷新。">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -153,36 +155,53 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Flask开发之实现验证码功能" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Flask开发之实现验证码功能
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/20/Flask开发之实现验证码功能/" class="archive-article-date">
+
+        
+        <a href="/2018/02/20/Flask开发之实现验证码功能/" class="archive-article-date">
   	<time datetime="2018-02-20T10:02:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/20/Flask开发之实现验证码功能/">Flask开发之实现验证码功能</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?</p>
+</blockquote>
+<p>编写验证码的步骤：</p>
+<ol>
+<li>获取验证码（字母+数字）；</li>
+<li>获取验证码图片；</li>
+<li>将验证码图片显示于网页；</li>
+<li>点击验证码图片刷新。</li>
+</ol>
+<a id="more"></a>
+<h3 id="获取验证码"><a href="#获取验证码" class="headerlink" title="获取验证码"></a>获取验证码</h3><p>Flask是Python的web开发框架之一，这一部分使用Python编写，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">codenum = 4</div><div class="line">source = list(string.letters)</div><div class="line">for index in range(0, 10):</div><div class="line">    source.append(str(index))</div><div class="line">code = &apos;&apos;.join(random.sample(source, 4))</div></pre></td></tr></table></figure></p>
+<h3 id="获取验证码图片"><a href="#获取验证码图片" class="headerlink" title="获取验证码图片"></a>获取验证码图片</h3><p>这里使用Python中的PIL库绘制，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"># 设置图片大小</div><div class="line">width = 45 * 5</div><div class="line">height = 50</div><div class="line">image = Image.new(&apos;RGB&apos;, (width, height), (255, 255, 255))</div><div class="line">#选择字体</div><div class="line">font = ImageFont.truetype(&apos;Arial.ttf&apos;, 36)</div><div class="line">draw = ImageDraw.Draw(image)</div><div class="line"></div><div class="line">for x in range(width):</div><div class="line">    for y in range(height):</div><div class="line">        colorRandom1 = (random.randint(255, 255), random.randint(255, 255), random.randint(255, 255))</div><div class="line">        draw.point((x, y), fill=colorRandom1)</div><div class="line"></div><div class="line">    for t in range(codenum):</div><div class="line">        colorRandom2 = (random.randint(85, 155), random.randint(85, 155), random.randint(85, 155))</div><div class="line">        draw.text((45 * t + 25, 10), code[t], font=font, fill=colorRandom2)</div><div class="line">image_d = ImageDraw.Draw(image)</div><div class="line">for i in range(5):</div><div class="line">    colorRandom3 = (random.randint(85, 100), random.randint(85, 100), random.randint(85, 100))</div><div class="line">    begin = (random.randint(0, width), random.randint(0, height))</div><div class="line">    end = (random.randint(0, width), random.randint(0, height))</div><div class="line">    image_d.line([begin, end], fill=colorRandom3)</div></pre></td></tr></table></figure></p>
+<p>得到了验证码图片之后，就要考虑一个问题，如何保存验证码图片的问题，最简单的方法当然就是将其保存于文件中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">image = image.save(&apos;/路径&apos; + code +&apos;.jpg&apos;)</div></pre></td></tr></table></figure></p>
+<p>但是，保存到文件中导致占用的空间过大，那么如何解决呢？stringio库可以实现将文件保存于内存中，而不是磁盘中，在本次代码编写中，使用比stringio更快的cstringio来进行实现，将上述代码中保存于文件的代码片段进行替换：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import cStringIO</div><div class="line">    tmps = cStringIO.StringIO()</div><div class="line">    image.save(tmps, &quot;jpeg&quot;)</div><div class="line">    res = Response()</div><div class="line">    res.headers.set(&quot;Content-Type&quot;, &quot;image/JPEG;charset=UTF-8&quot;)</div><div class="line">    res.set_data(tmps.getvalue())</div><div class="line">    return res</div></pre></td></tr></table></figure></p>
+<h3 id="将验证码显示于网页"><a href="#将验证码显示于网页" class="headerlink" title="将验证码显示于网页"></a>将验证码显示于网页</h3><p>接下来，就是最重要的一部分了，需要将得到的验证码显示于网页。因为是img标签，所以肯定是需要src属性，刚开始不熟悉，总觉得需要src后面需要添加图片的路径，而采用图片流的方式返回的不是图片，该怎么处理呢？在这里，将上述得到验证码图片的代码定义为一个路由，在前端的<img>标签中调用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img id=&quot;verficode&quot; src=&quot;./verficode&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>即可实现调用。</p>
+<h3 id="点击验证码刷新"><a href="#点击验证码刷新" class="headerlink" title="点击验证码刷新"></a>点击验证码刷新</h3><p>点击验证码刷新属于前端的内容了，需要在img标签中添加onclick属性，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img id=&quot;verficode&quot; src=&quot;./verficode&quot; onclick=&quot;window.location.reload()&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>上述代码，即可实现验证码的显示。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -194,209 +213,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/02/20/Flask开发之实现验证码功能/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/29/echarts使用总结/" class="archive-article-date">
-  	<time datetime="2018-01-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-29</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/29/echarts使用总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">echarts使用总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/29/echarts使用总结/">echarts使用总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取验证码"><span class="toc-number">1.</span> <span class="toc-text">获取验证码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取验证码图片"><span class="toc-number">2.</span> <span class="toc-text">获取验证码图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将验证码显示于网页"><span class="toc-number">3.</span> <span class="toc-text">将验证码显示于网页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#点击验证码刷新"><span class="toc-number">4.</span> <span class="toc-text">点击验证码刷新</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/13/浅谈Flask开发/" class="archive-article-date">
-  	<time datetime="2018-01-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-13</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/13/浅谈Flask开发/">关于Flask开发</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/10/Python操作Mysql数据库/" class="archive-article-date">
-  	<time datetime="2018-01-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/10/Python操作Mysql数据库/">Python操作Mysql数据库总结</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/07/2017小结/" class="archive-article-date">
-  	<time datetime="2018-01-06T17:02:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/07/2017小结/">2017年终总结</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/01/书摘/" class="archive-article-date">
-  	<time datetime="2018-01-01T15:55:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/01/书摘/">书摘</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">阅读</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -421,8 +350,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
