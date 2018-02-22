@@ -6,22 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Flask开发之实现验证码功能 | ben&#39;s blog</title>
+  <title>ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?   编写验证码的步骤：  获取验证码（字母+数字）； 获取验证码图片； 将验证码图片显示于网页； 点击验证码图片刷新。">
-<meta name="keywords" content="Python">
+  <meta name="description" content="Flask开发之实现验证码功能title: Flask开发之实现验证码功能date: 2018-02-20 18:02:27tags: Python toc: true 在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?  编写验证码的步骤：  获取验证码（字母+数字）； 获取验证码图片； 将验证码图片显示于网页； 点击验证码图片刷新。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flask开发之实现验证码功能">
-<meta property="og:url" content="http://yoursite.com/2018/02/20/Flask开发之实现验证码功能/index.html">
+<meta property="og:title" content="ben&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/2018/02/22/Flask开发之实现验证码功能/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?   编写验证码的步骤：  获取验证码（字母+数字）； 获取验证码图片； 将验证码图片显示于网页； 点击验证码图片刷新。">
+<meta property="og:description" content="Flask开发之实现验证码功能title: Flask开发之实现验证码功能date: 2018-02-20 18:02:27tags: Python toc: true 在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?  编写验证码的步骤：  获取验证码（字母+数字）； 获取验证码图片； 将验证码图片显示于网页； 点击验证码图片刷新。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pic.suiyiyun.cn/598203/blog/verficode.jpeg">
-<meta property="og:updated_time" content="2018-02-21T14:59:08.900Z">
+<meta property="og:updated_time" content="2018-02-22T11:54:45.141Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flask开发之实现验证码功能">
-<meta name="twitter:description" content="在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?   编写验证码的步骤：  获取验证码（字母+数字）； 获取验证码图片； 将验证码图片显示于网页； 点击验证码图片刷新。">
-<meta name="twitter:image" content="http://pic.suiyiyun.cn/598203/blog/verficode.jpeg">
+<meta name="twitter:title" content="ben&#39;s blog">
+<meta name="twitter:description" content="Flask开发之实现验证码功能title: Flask开发之实现验证码功能date: 2018-02-20 18:02:27tags: Python toc: true 在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?  编写验证码的步骤：  获取验证码（字母+数字）； 获取验证码图片； 将验证码图片显示于网页； 点击验证码图片刷新。">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -160,27 +157,12 @@
             <article id="post-Flask开发之实现验证码功能" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Flask开发之实现验证码功能
-    </h1>
-  
-
-        
-        <a href="/2018/02/20/Flask开发之实现验证码功能/" class="archive-article-date">
-  	<time datetime="2018-02-20T10:02:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-20</time>
-</a>
-        
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
+        <h2 id="Flask开发之实现验证码功能"><a href="#Flask开发之实现验证码功能" class="headerlink" title="Flask开发之实现验证码功能"></a>Flask开发之实现验证码功能</h2><p>title: Flask开发之实现验证码功能<br>date: 2018-02-20 18:02:27<br>tags: Python</p>
+<h2 id="toc-true"><a href="#toc-true" class="headerlink" title="toc: true"></a>toc: true</h2><blockquote>
 <p>在进行web开发时，考虑到安全问题，一般都会添加验证码功能，那么，在Flask中如何实现验证码功能呢?</p>
 </blockquote>
-<p><img src="http://pic.suiyiyun.cn/598203/blog/verficode.jpeg" alt="alt text" title="验证码"></p>
 <p>编写验证码的步骤：</p>
 <ol>
 <li>获取验证码（字母+数字）；</li>
@@ -205,17 +187,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -266,7 +237,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/02/20/Flask开发之实现验证码功能/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/02/22/Flask开发之实现验证码功能/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -301,19 +272,6 @@
             </div>
         </div>
         
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取验证码"><span class="toc-number">1.</span> <span class="toc-text">获取验证码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取验证码图片"><span class="toc-number">2.</span> <span class="toc-text">获取验证码图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将验证码显示于网页"><span class="toc-number">3.</span> <span class="toc-text">将验证码显示于网页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#点击验证码刷新"><span class="toc-number">4.</span> <span class="toc-text">点击验证码刷新</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
         
     </div>
 </aside>
@@ -419,15 +377,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">阅读</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
             
             <div class="clearfix"></div>
