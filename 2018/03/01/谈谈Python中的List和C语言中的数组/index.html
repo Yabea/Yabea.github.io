@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="ben&#39;s blog">
 <meta property="og:description" content="晚上看书时，书中说到C语言中的数组，联想到Python是由C编写的，那么Python中的list和C语言中的数组有什么不同呢？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-01T15:58:49.979Z">
+<meta property="og:updated_time" content="2018-03-05T09:39:40.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谈谈Python中的list和C语言中的数组">
 <meta name="twitter:description" content="晚上看书时，书中说到C语言中的数组，联想到Python是由C编写的，那么Python中的list和C语言中的数组有什么不同呢？">
@@ -175,7 +175,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>晚上看书时，书中说到C语言中的数组，联想到Python是由C编写的，那么Python中的list和C语言中的数组有什么不同呢？</p>
+        <blockquote>
+<p>晚上看书时，书中说到C语言中的数组，联想到Python是由C编写的，那么Python中的list和C语言中的数组有什么不同呢？</p>
+</blockquote>
 <a id="more"></a>
 <h3 id="空间效率"><a href="#空间效率" class="headerlink" title="空间效率"></a>空间效率</h3><p><strong>C语言中</strong>，创建数组时，首先需要指定数组的容量大小，根据大小来分配内存，也就是说，即使要在数组中存储一个元素，也需要为所有的元素预先的分配内存。故，C语言中数组的空间效率不高。<br><strong>Python中</strong>，列表list属于其的一个高级特性，是对源码中对象(PyListObject）的一个抽象，而因为不同的list存储元素的个数不同，故这里的PyListObject再创立之初就被设置为变长对象。并且，该对象中内置了像插入、删除等方法，可以在运行时动态的调整维护的内存和元素。</p>
 <h3 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h3><p><strong>C语言中</strong>，除了动态数组以外，数组都是不可变的。<br><strong>Python中</strong>，对象中封装了插入、删除等方法，所以List是可变的。</p>
