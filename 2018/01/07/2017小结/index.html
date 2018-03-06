@@ -203,6 +203,32 @@
       
 
       
+            <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+            <span class="btn-bg"></span>
+            <span class="btn-text">文章导航</span>
+            </p>
+            <div id="toc-article" class="toc-article">
+                <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+                <strong class="toc-title">文章目录</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#01-选择与放弃"><span class="toc-number">1.</span> <span class="toc-text">01 - 选择与放弃</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#02-悠哉乐哉"><span class="toc-number">2.</span> <span class="toc-text">02 - 悠哉乐哉</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0304-叹息与惊喜并存"><span class="toc-number">3.</span> <span class="toc-text">0304 - 叹息与惊喜并存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#05-憧憬忙碌着"><span class="toc-number">4.</span> <span class="toc-text">05 - 憧憬忙碌着</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#06-毕业"><span class="toc-number">5.</span> <span class="toc-text">06 毕业</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#07-工作"><span class="toc-number">6.</span> <span class="toc-text">07 工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-9-10-细水长流"><span class="toc-number">7.</span> <span class="toc-text">8,9,10 细水长流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-幸运与被关怀"><span class="toc-number">8.</span> <span class="toc-text">11 幸运与被关怀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-耀眼"><span class="toc-number">9.</span> <span class="toc-text">12 耀眼</span></a></li></ol>
+           </div>
+           <script type="text/javascript">
+            function showToc(){
+                var toc_article = document.getElementById("toc-article");
+                var show_toc_btn = document.getElementById("show-toc-btn");
+                toc_article.setAttribute("style","display:block");
+                show_toc_btn.setAttribute("style","display:none");
+                };
+            function showBtn(){
+                var toc_article = document.getElementById("toc-article");
+                var show_toc_btn = document.getElementById("show-toc-btn");
+                toc_article.setAttribute("style","display:none");
+                show_toc_btn.setAttribute("style","display:block");
+                };
+           </script>
+           
+        
+      
     </div>
     <div class="article-info article-info-index">
       
