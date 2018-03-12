@@ -122,8 +122,12 @@
 }
 .photos-btn.active {
 	color: #08c;
-	border: 1px solid #e5e5e5;
+	border: 1px solid #9BE4D8;
 	border-bottom: 5px solid #fff;
+}
+
+.archives {
+	margin-bottom: 165px;
 }
 
 @media screen and (max-width:600px) {
