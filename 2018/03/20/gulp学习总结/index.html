@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="ben&#39;s blog">
 <meta property="og:description" content="gulp 是基于 node 实现 Web 前端自动化开发的工具，利用它能够极大的提高开发效率。本文将使用其对JS文件和CSS文件进行压缩，本文代码已上传github。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-20T10:14:39.298Z">
+<meta property="og:updated_time" content="2018-03-20T10:16:44.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gulp压缩文件学习总结">
 <meta name="twitter:description" content="gulp 是基于 node 实现 Web 前端自动化开发的工具，利用它能够极大的提高开发效率。本文将使用其对JS文件和CSS文件进行压缩，本文代码已上传github。">
@@ -205,7 +205,7 @@
 <p>// 获取 minify-css 模块（用于压缩 CSS）<br>var minifyCSS = require(‘gulp-minify-css’)</p>
 <p>// 压缩 css 文件<br>// 在命令行使用 gulp css 启动此任务<br>gulp.task(‘css’, function () {<br>    // 1. 找到文件<br>    gulp.src(‘*.css’)<br>    // 2. 压缩文件<br>        .pipe(minifyCSS())<br>    // 3. 另存为压缩文件<br>        .pipe(gulp.dest(‘dist/css’))<br>})</p>
 <p>// 在命令行使用 gulp auto 启动此任务<br>gulp.task(‘auto’, function () {<br>    // 监听文件修改，当文件被修改则执行 css 任务<br>    gulp.watch(‘*.css’, [‘css’])<br>});</p>
-<p>// 使用 gulp.task(‘default’) 定义默认任务<br>// 在命令行使用 gulp 启动 css 任务和 auto 任务<br>gulp.task(‘default’, [‘css’, ‘auto’])<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">在命令行中输入：</div></pre></td></tr></table></figure></p>
+<p>// 使用 gulp.task(‘default’) 定义默认任务<br>// 在命令行使用 gulp 启动 css 任务和 auto 任务<br>gulp.task(‘default’, [‘css’, ‘auto’])<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">在命令行中输入：</div></pre></td></tr></table></figure></p>
 <p>gulp<br>```<br>即可在dist/css文件夹中生成压缩后的css文件。</p>
 <p>以上，是使用gulp压缩文件的总结。</p>
 
@@ -413,11 +413,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">总结</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">总结</a>
               </li>
              
               <li class="article-tag-list-item">
