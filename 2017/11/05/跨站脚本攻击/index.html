@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/2 | ben&#39;s blog</title>
+  <title>跨站脚本攻击XSS | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个不太正确的人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ben&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2017/02/index.html">
+  <meta name="description" content="跨站脚本攻击（cross site script），简称XSS，它是常见的Web安全漏洞之一，也是web中最主流的漏洞，XSS主要分为：DOM型、反射型和存储型。本文将按照不同类型对该漏洞总结介绍。">
+<meta name="keywords" content="安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨站脚本攻击XSS">
+<meta property="og:url" content="http://yoursite.com/2017/11/05/跨站脚本攻击/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="一个不太正确的人">
+<meta property="og:description" content="跨站脚本攻击（cross site script），简称XSS，它是常见的Web安全漏洞之一，也是web中最主流的漏洞，XSS主要分为：DOM型、反射型和存储型。本文将按照不同类型对该漏洞总结介绍。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-29T15:52:41.195Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ben&#39;s blog">
-<meta name="twitter:description" content="一个不太正确的人">
+<meta name="twitter:title" content="跨站脚本攻击XSS">
+<meta name="twitter:description" content="跨站脚本攻击（cross site script），简称XSS，它是常见的Web安全漏洞之一，也是web中最主流的漏洞，XSS主要分为：DOM型、反射型和存储型。本文将按照不同类型对该漏洞总结介绍。">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -157,60 +159,164 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-跨站脚本攻击" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/22/python多线程机制/" class="archive-article-date">
-  	<time datetime="2017-02-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/22/python多线程机制/">Python多线程机制</a>
+    <h1 class="article-title" itemprop="name">
+      跨站脚本攻击XSS
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+		
+        
+        <a href="/2017/11/05/跨站脚本攻击/" class="archive-article-date">
+  	<time datetime="2017-11-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-05</time>
+</a>
+        
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>跨站脚本攻击（cross site script），简称XSS，它是常见的Web安全漏洞之一，也是web中最主流的漏洞，XSS主要分为：DOM型、反射型和存储型。本文将按照不同类型对该漏洞总结介绍。</p>
+<a id="more"></a>
+<h2 id="DOM型"><a href="#DOM型" class="headerlink" title="DOM型"></a>DOM型</h2><p>DOM型：基于文档对象模型。<br>DOM就是DOM树，一个树状的模型，可以编写JS代码根据dom一层一层的节点，去遍历/获取/修改对应的节点、对象和值。DOM型XSS就是通过url传入参数去控制触发的，是在浏览器的解析中改变页面中的DOM树，且恶意代码并不在返回页面的源码中回显。</p>
+<h3 id="典型应用场景分析"><a href="#典型应用场景分析" class="headerlink" title="典型应用场景分析"></a>典型应用场景分析</h3><p> <strong>界面跳转</strong>:常用的方法有两种，一种是在后端跳转，比如在后端设置302跳转Header或者通过参数接收参数实现跳转；第二种是使用Meta标签实现跳转。第二种方法是通过JS实现跳转的，常用的方法有:location.href/location.replace()/location.assign()。<br>但是由于JS是客户端脚本语言，时刻“天窗打开”和访客“坦诚相见”。因此，如果过滤不当的话，很容易就引起漏洞</p>
+<h2 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h2><p>所谓反射型，是有一个反射的过程。特点是非持久化，需要欺骗用户去点击带有特定参数的链接才能引起该漏洞。</p>
+<h2 id="存储型"><a href="#存储型" class="headerlink" title="存储型"></a>存储型</h2><p>特点是持久化， 代码是存储在服务器中的，如在发表文章等地方，若过滤不严格的话，当攻击者写入代码，将被存到服务器中，用户访问该界面将触发恶意代码的执行。<br>存储型XSS比较危险，容易造成蠕虫、盗窃cookie等。</p>
+
+      
+
+         
+        
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/11/05/跨站脚本攻击/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/12/08/Java反序列化漏洞/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java反序列化漏洞
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/09/23/CSRF跨站请求伪造/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSRF跨站请求伪造</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -241,8 +347,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
