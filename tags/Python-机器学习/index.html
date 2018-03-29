@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Canvas学习总结 | ben&#39;s blog</title>
+  <title>Tag: Python 机器学习 | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一直觉得前端动画效果超酷，今天偶然看到酷炫动画，了解到其是由canvas实现的，一时兴起，便对其进行学习总结。对应代码在这里">
-<meta name="keywords" content="前端">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Canvas学习总结">
-<meta property="og:url" content="http://yoursite.com/2018/03/19/Canvas学习/index.html">
+  <meta name="description" content="一个不太正确的人">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ben&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/tags/Python-机器学习/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="一直觉得前端动画效果超酷，今天偶然看到酷炫动画，了解到其是由canvas实现的，一时兴起，便对其进行学习总结。对应代码在这里">
+<meta property="og:description" content="一个不太正确的人">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-19T15:20:12.492Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Canvas学习总结">
-<meta name="twitter:description" content="一直觉得前端动画效果超酷，今天偶然看到酷炫动画，了解到其是由canvas实现的，一时兴起，便对其进行学习总结。对应代码在这里">
+<meta name="twitter:title" content="ben&#39;s blog">
+<meta name="twitter:description" content="一个不太正确的人">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -159,176 +157,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Canvas学习" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Canvas学习总结
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2015" class="archive-year">2015</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2015/08/04/机器学习之KNN算法/" class="archive-article-date">
+  	<time datetime="2015-08-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-04</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2015/08/04/机器学习之KNN算法/">机器学习之**K近邻算法**</a>
     </h1>
   
 
-		
-        
-        <a href="/2018/03/19/Canvas学习/" class="archive-article-date">
-  	<time datetime="2018-03-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-19</time>
-</a>
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一直觉得前端动画效果超酷，今天偶然看到酷炫动画，了解到其是由canvas实现的，一时兴起，便对其进行学习总结。对应代码在<a href="https://github.com/Yabea/front/tree/master/learn%20canvas/demo" target="_blank" rel="external">这里</a></p>
-<a id="more"></a>
-<h2 id="关于canvs"><a href="#关于canvs" class="headerlink" title="关于canvs"></a>关于canvs</h2><h3 id="canvas介绍"><a href="#canvas介绍" class="headerlink" title="canvas介绍"></a>canvas介绍</h3><p>Canvas是HTML5中新增的一个组件，可以<strong>结合JavaScript</strong>在网页上绘制各种图表和动画。</p>
-<h3 id="创建canvas"><a href="#创建canvas" class="headerlink" title="创建canvas"></a>创建canvas</h3><p>canvas的创建需要在HTML中创建<canvas>标签。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;canvas style=&quot;border:1px solid #ddd;&quot; width=&quot;1000&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</div></pre></td></tr></table></figure></canvas></p>
-<p>这样我们就在网页中创建了1000<em>500的画布(默认大小为300</em>150)。<br>接下来，我们就可以使用JavaScript在这个块中搞事情。</p>
-<ul>
-<li><p>第一步：<strong>获取canvas</strong>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var myCanvas=document.getElementById(&quot;myCanvas&quot;);</div></pre></td></tr></table></figure>
-</li>
-<li><p>第二步：<strong>获取context</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var context=myCanvas.getContext(&quot;2d&quot;);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p> getContext()返回了一个可以在画布上绘图的方法和属性。<br> 完整的getContext(“2d”) 对象属性和方法，可以参见<a href="http://www.w3school.com.cn/tags/html_ref_canvas.asp" target="_blank" rel="external">W3school</a></p>
-<h3 id="使用canvas绘制直线"><a href="#使用canvas绘制直线" class="headerlink" title="使用canvas绘制直线"></a>使用canvas绘制直线</h3><p>初级选手，只能从简单的学起。<br>根据上述方法，编写JS代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">unction line()&#123;</div><div class="line">	var myCanvas=document.getElementById(&quot;line&quot;);</div><div class="line">    myCanvas.width=&quot;250&quot;;</div><div class="line">    myCanvas.height=&quot;120&quot;;</div><div class="line">    var cxt=myCanvas.getContext(&quot;2d&quot;);</div><div class="line">  </div><div class="line">    //画直线</div><div class="line">    cxt.moveTo(30, 30);</div><div class="line">    cxt.lineTo(220, 90);</div><div class="line">    //定义画线样式</div><div class="line">    cxt.strokeStyle=&quot;rgba(238, 220, 20)&quot;;</div><div class="line">    cxt.lineWidth=&quot;3&quot;;</div><div class="line">    cxt.lineCap=&quot;round&quot;;//圆头</div><div class="line">    cxt.stroke();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>绘制三角形</strong><br>有了画直线的方法，我们可以据此绘制各种多边形，在此以三角形为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function triangle()&#123;</div><div class="line">	var myCanvas=document.getElementById(&quot;triangle&quot;);</div><div class="line">    myCanvas.width=&quot;250&quot;;</div><div class="line">    myCanvas.height=&quot;120&quot;;</div><div class="line"></div><div class="line">    var cxt=myCanvas.getContext(&quot;2d&quot;);</div><div class="line">    //画三角形</div><div class="line">    cxt.moveTo(60,10);</div><div class="line">    cxt.lineTo(200,50);</div><div class="line">    cxt.lineTo(60, 110);</div><div class="line">    cxt.lineTo(60, 10);</div><div class="line">    cxt.strokeStyle=&quot;rgb(43, 154, 191)&quot;;</div><div class="line">    cxt.lineWidth=&quot;3&quot;;</div><div class="line">    cxt.lineCap=&quot;round&quot;;</div><div class="line">    cxt.stroke();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="使用canvas绘制弧线和圆"><a href="#使用canvas绘制弧线和圆" class="headerlink" title="使用canvas绘制弧线和圆"></a>使用canvas绘制弧线和圆</h3><p>弧线和直线的绘制方式不同，需要使用.arc()方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">function circle()&#123;</div><div class="line">	var myCanvas=document.getElementById(&quot;circle&quot;);</div><div class="line">    myCanvas.width=&quot;250&quot;;</div><div class="line">    myCanvas.height=&quot;120&quot;;</div><div class="line">    var cxt=myCanvas.getContext(&quot;2d&quot;);</div><div class="line">    cxt.beginPath();</div><div class="line">    cxt.arc(65, 50, 40, 0, Math.PI*2, true);</div><div class="line">    cxt.strokeStyle = &apos;#ffffff&apos;;</div><div class="line">	cxt.stroke();</div><div class="line">	cxt.closePath();</div><div class="line"></div><div class="line">	cxt.beginPath();</div><div class="line">	cxt.arc(180, 50, 40, 0, Math.PI*2, true);</div><div class="line">    cxt.strokeStyle = &apos;#ffffff&apos;;</div><div class="line">	cxt.stroke();</div><div class="line">	cxt.closePath();</div><div class="line"></div><div class="line">	cxt.beginPath();</div><div class="line">	cxt.arc(130, 60, 60, Math.PI*0.25, Math.PI*0.75, false);</div><div class="line">    cxt.strokeStyle = &apos;#ffffff&apos;;</div><div class="line">	cxt.stroke();</div><div class="line">	cxt.closePath();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>以上，是对canvas的基础知识总结。<br>有时间将尝试前端动画。</p>
-
-      
-
-         
-        
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python 机器学习</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/19/Canvas学习/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/03/20/gulp学习总结/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          gulp压缩文件学习总结
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/03/13/一个Flag/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">一个Flag</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -359,9 +241,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: false,

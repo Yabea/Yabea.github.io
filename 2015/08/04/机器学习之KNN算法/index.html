@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Canvas学习总结 | ben&#39;s blog</title>
+  <title>机器学习之**K近邻算法** | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一直觉得前端动画效果超酷，今天偶然看到酷炫动画，了解到其是由canvas实现的，一时兴起，便对其进行学习总结。对应代码在这里">
-<meta name="keywords" content="前端">
+  <meta name="description" content="最近在看《机器学习实战》这本书，因为自己本身很想深入的了解机器学习算法，加之想学python，就在朋友的推荐之下选择了这本书进行学习。">
+<meta name="keywords" content="Python 机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Canvas学习总结">
-<meta property="og:url" content="http://yoursite.com/2018/03/19/Canvas学习/index.html">
+<meta property="og:title" content="机器学习之**K近邻算法**">
+<meta property="og:url" content="http://yoursite.com/2015/08/04/机器学习之KNN算法/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="一直觉得前端动画效果超酷，今天偶然看到酷炫动画，了解到其是由canvas实现的，一时兴起，便对其进行学习总结。对应代码在这里">
+<meta property="og:description" content="最近在看《机器学习实战》这本书，因为自己本身很想深入的了解机器学习算法，加之想学python，就在朋友的推荐之下选择了这本书进行学习。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-19T15:20:12.492Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Yabea/blog-back-up/master/min_photos/2015_08_04-knn.png">
+<meta property="og:updated_time" content="2018-03-29T11:29:08.216Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Canvas学习总结">
-<meta name="twitter:description" content="一直觉得前端动画效果超酷，今天偶然看到酷炫动画，了解到其是由canvas实现的，一时兴起，便对其进行学习总结。对应代码在这里">
+<meta name="twitter:title" content="机器学习之**K近邻算法**">
+<meta name="twitter:description" content="最近在看《机器学习实战》这本书，因为自己本身很想深入的了解机器学习算法，加之想学python，就在朋友的推荐之下选择了这本书进行学习。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Yabea/blog-back-up/master/min_photos/2015_08_04-knn.png">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -159,21 +161,21 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Canvas学习" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-机器学习之KNN算法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Canvas学习总结
+      机器学习之**K近邻算法**
     </h1>
   
 
 		
         
-        <a href="/2018/03/19/Canvas学习/" class="archive-article-date">
-  	<time datetime="2018-03-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-19</time>
+        <a href="/2015/08/04/机器学习之KNN算法/" class="archive-article-date">
+  	<time datetime="2015-08-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-04</time>
 </a>
         
 
@@ -181,24 +183,54 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一直觉得前端动画效果超酷，今天偶然看到酷炫动画，了解到其是由canvas实现的，一时兴起，便对其进行学习总结。对应代码在<a href="https://github.com/Yabea/front/tree/master/learn%20canvas/demo" target="_blank" rel="external">这里</a></p>
+        <blockquote>
+<p>最近在看《机器学习实战》这本书，因为自己本身很想深入的了解机器学习算法，加之想学python，就在朋友的推荐之下选择了这本书进行学习。 </p>
+</blockquote>
 <a id="more"></a>
-<h2 id="关于canvs"><a href="#关于canvs" class="headerlink" title="关于canvs"></a>关于canvs</h2><h3 id="canvas介绍"><a href="#canvas介绍" class="headerlink" title="canvas介绍"></a>canvas介绍</h3><p>Canvas是HTML5中新增的一个组件，可以<strong>结合JavaScript</strong>在网页上绘制各种图表和动画。</p>
-<h3 id="创建canvas"><a href="#创建canvas" class="headerlink" title="创建canvas"></a>创建canvas</h3><p>canvas的创建需要在HTML中创建<canvas>标签。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;canvas style=&quot;border:1px solid #ddd;&quot; width=&quot;1000&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</div></pre></td></tr></table></figure></canvas></p>
-<p>这样我们就在网页中创建了1000<em>500的画布(默认大小为300</em>150)。<br>接下来，我们就可以使用JavaScript在这个块中搞事情。</p>
-<ul>
-<li><p>第一步：<strong>获取canvas</strong>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var myCanvas=document.getElementById(&quot;myCanvas&quot;);</div></pre></td></tr></table></figure>
+<h2 id="K-近邻算法（KNN）概述"><a href="#K-近邻算法（KNN）概述" class="headerlink" title="K-近邻算法（KNN）概述"></a>K-近邻算法（KNN）概述</h2><p>最简单最初级的分类器是将全部的训练数据所对应的类别都记录下来，当测试对象的属性和某个训练对象的属性完全匹配时，便可以对其进行分类。但是怎么可能所有测试对象都会找到与之完全匹配的训练对象呢，其次就是存在一个测试对象同时与多个训练对象匹配，导致一个训练对象被分到了多个类的问题，基于这些问题呢，就产生了KNN。</p>
+<p><strong>KNN是通过测量不同特征值之间的距离进行分类。</strong>它的<strong>思路</strong>是：如果一个样本在特征空间中的k个最相似(即特征空间中最邻近)的样本中的大多数属于某一个类别，则该样本也属于这个类别，其中，K通常是不大于20的整数。<br>KNN算法中，所选择的邻居都是已经正确分类的对象，并且，该算法在定类决策上只依据最邻近的一个或者几个样本的类别来决定待分样本所属的类别。</p>
+<h3 id="K值的重要性"><a href="#K值的重要性" class="headerlink" title="K值的重要性"></a>K值的重要性</h3><p>下面举例说明K值的重要性：如下图，绿色圆要被决定赋予哪个类，是红色三角形还是蓝色四方形？如果K=3，由于红色三角形所占比例为2/3，绿色圆将被赋予红色三角形那个类，如果K=5，由于蓝色四方形比例为3/5，因此绿色圆被赋予蓝色四方形类。</p>
+<center><br><img src="https://raw.githubusercontent.com/Yabea/blog-back-up/master/min_photos/2015_08_04-knn.png" alt="alt text" title="重庆很有趣"><br> </center>
+
+<p>由此也说明了KNN算法的结果很大程度取决于K的选择。</p>
+<h3 id="邻近如何衡量？"><a href="#邻近如何衡量？" class="headerlink" title="邻近如何衡量？"></a>邻近如何衡量？</h3><p>在KNN算法中，通过计算对象间距离来作为各个对象之间的非相似性指标来衡量对象之间是否邻近，避免了对象之间的匹配问题，在这里距离一般使用欧氏距离或曼哈顿距离：</p>
+<p>同时，KNN通过依据k个对象中占优的类别进行决策，而不是单一的对象类别决策。这两点算是KNN算法的优势。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>KNN算法总结</strong>:在训练集中数据和标签已知的情况下，输入测试数据，将测试数据的特征与训练集中对应的特征进行相互比较，找到训练集中与之最为相似的前K个数据，则该测试数据对应的类别就是K个数据中出现次数最多的那个分类.</p>
+<p><strong>算法描述</strong>：</p>
+<ol>
+<li>计算测试数据与各个训练数据之间的距离；</li>
+<li>按照距离的递增关系进行排序；</li>
+<li>选取距离最小的K个点；</li>
+<li>确定前K个点所在类别的出现频率；</li>
+<li>返回前K个点中出现频率最高的类别作为测试数据的预测分类。</li>
+</ol>
+<h2 id="python实现"><a href="#python实现" class="headerlink" title="python实现"></a>python实现</h2><p><strong>说明</strong>:本算法使用python3.4.3，里面有一些用法与2.7还是有些出入。<br>接下来，建立一个KNN.py文件对算法的可行性进行验证，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">#coding:utf-8</div><div class="line">from numpy import *</div><div class="line">import operator</div><div class="line"></div><div class="line">##给出训练数据以及对应的类别</div><div class="line">def createDataSet():</div><div class="line">    group = array([[1.0,2.0],[1.2,0.1],[0.1,1.4],[0.3,3.5]])</div><div class="line">    labels = [&apos;A&apos;,&apos;A&apos;,&apos;B&apos;,&apos;B&apos;]</div><div class="line">    return group,labels</div><div class="line"></div><div class="line">###通过KNN进行分类</div><div class="line">def classify(input,dataSe t,label,k):</div><div class="line">    dataSize = dataSet.shape[0]</div><div class="line">    ####计算欧式距离</div><div class="line">    diff = tile(input,(dataSize,1)) - dataSet</div><div class="line">    sqdiff = diff ** 2</div><div class="line">    squareDist = sum(sqdiff,axis = 1)###行向量分别相加，从而得到新的一个行向量</div><div class="line">    dist = squareDist ** 0.5</div><div class="line">    </div><div class="line">    ##对距离进行排序</div><div class="line">    sortedDistIndex = argsort(dist)##argsort()根据元素的值从大到小对元素进行排序，返回下标</div><div class="line"></div><div class="line">    classCount=&#123;&#125;</div><div class="line">    for i in range(k):</div><div class="line">        voteLabel = label[sortedDistIndex[i]]</div><div class="line">        ###对选取的K个样本所属的类别个数进行统计</div><div class="line">        classCount[voteLabel] = classCount.get(voteLabel,0) + 1</div><div class="line">    ###选取出现的类别次数最多的类别</div><div class="line">    maxCount = 0</div><div class="line">    for key,value in classCount.items():</div><div class="line">        if value &gt; maxCount:</div><div class="line">            maxCount = value</div><div class="line">            classes = key</div><div class="line"></div><div class="line">    return classes</div></pre></td></tr></table></figure></p>
+<p>接下来，在命令行窗口输入如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#-*-coding:utf-8 -*-</div><div class="line">import sys</div><div class="line">sys.path.append(&quot;...文件路径...&quot;)</div><div class="line">import KNN</div><div class="line">from numpy import *</div><div class="line">dataSet,labels = KNN.createDataSet()</div><div class="line">input = array([1.1,0.3])</div><div class="line">K = 3</div><div class="line">output = KNN.classify(input,dataSet,labels,K)</div><div class="line">print(&quot;测试数据为:&quot;,input,&quot;分类结果为：&quot;,output)</div></pre></td></tr></table></figure></p>
+<p>回车之后的结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">测试数据为： [ 1.1  0.3] 分类为： A</div></pre></td></tr></table></figure></p>
+<p>答案符合我们的预期，要证明算法的准确性，势必还需要通过处理复杂问题进行验证，之后另行说明。</p>
+<h3 id="问题整理"><a href="#问题整理" class="headerlink" title="问题整理"></a>问题整理</h3><p>这是第一次用python编的一个小程序，势必会遇到各种问题，在此次编程调试过程中遇到了如下问题：</p>
+<ol>
+<li>导入.py文件路径有问题，因此需要在最开始加如下代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">　　import sys</div><div class="line">　　sys.path.append(&quot;文件路径&quot;)</div></pre></td></tr></table></figure>
 </li>
-<li><p>第二步：<strong>获取context</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var context=myCanvas.getContext(&quot;2d&quot;);</div></pre></td></tr></table></figure>
+</ol>
+<p>这样就不会存在路径有误的问题了；</p>
+<ol>
+<li>在python提示代码存在问题时，一定要及时改正，改正之后保存之后再执行命令行，这一点跟MATLAB是不一样的，所以在python中最好是敲代码的同时在命令行中一段一段的验证；</li>
+<li>在调用文件时函数名一定要写正确，否则会出现：’module’ object has no attribute ‘creatDataSet’；</li>
+<li>错误：’int’ object has no attribute ‘kclassify’，这个问题出现的原因是之前我讲文件保存名为k.py,在执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">output = K.classify(input,dataSet,labels,K)</div></pre></td></tr></table></figure>
 </li>
-</ul>
-<p> getContext()返回了一个可以在画布上绘图的方法和属性。<br> 完整的getContext(“2d”) 对象属性和方法，可以参见<a href="http://www.w3school.com.cn/tags/html_ref_canvas.asp" target="_blank" rel="external">W3school</a></p>
-<h3 id="使用canvas绘制直线"><a href="#使用canvas绘制直线" class="headerlink" title="使用canvas绘制直线"></a>使用canvas绘制直线</h3><p>初级选手，只能从简单的学起。<br>根据上述方法，编写JS代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">unction line()&#123;</div><div class="line">	var myCanvas=document.getElementById(&quot;line&quot;);</div><div class="line">    myCanvas.width=&quot;250&quot;;</div><div class="line">    myCanvas.height=&quot;120&quot;;</div><div class="line">    var cxt=myCanvas.getContext(&quot;2d&quot;);</div><div class="line">  </div><div class="line">    //画直线</div><div class="line">    cxt.moveTo(30, 30);</div><div class="line">    cxt.lineTo(220, 90);</div><div class="line">    //定义画线样式</div><div class="line">    cxt.strokeStyle=&quot;rgba(238, 220, 20)&quot;;</div><div class="line">    cxt.lineWidth=&quot;3&quot;;</div><div class="line">    cxt.lineCap=&quot;round&quot;;//圆头</div><div class="line">    cxt.stroke();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>绘制三角形</strong><br>有了画直线的方法，我们可以据此绘制各种多边形，在此以三角形为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function triangle()&#123;</div><div class="line">	var myCanvas=document.getElementById(&quot;triangle&quot;);</div><div class="line">    myCanvas.width=&quot;250&quot;;</div><div class="line">    myCanvas.height=&quot;120&quot;;</div><div class="line"></div><div class="line">    var cxt=myCanvas.getContext(&quot;2d&quot;);</div><div class="line">    //画三角形</div><div class="line">    cxt.moveTo(60,10);</div><div class="line">    cxt.lineTo(200,50);</div><div class="line">    cxt.lineTo(60, 110);</div><div class="line">    cxt.lineTo(60, 10);</div><div class="line">    cxt.strokeStyle=&quot;rgb(43, 154, 191)&quot;;</div><div class="line">    cxt.lineWidth=&quot;3&quot;;</div><div class="line">    cxt.lineCap=&quot;round&quot;;</div><div class="line">    cxt.stroke();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="使用canvas绘制弧线和圆"><a href="#使用canvas绘制弧线和圆" class="headerlink" title="使用canvas绘制弧线和圆"></a>使用canvas绘制弧线和圆</h3><p>弧线和直线的绘制方式不同，需要使用.arc()方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">function circle()&#123;</div><div class="line">	var myCanvas=document.getElementById(&quot;circle&quot;);</div><div class="line">    myCanvas.width=&quot;250&quot;;</div><div class="line">    myCanvas.height=&quot;120&quot;;</div><div class="line">    var cxt=myCanvas.getContext(&quot;2d&quot;);</div><div class="line">    cxt.beginPath();</div><div class="line">    cxt.arc(65, 50, 40, 0, Math.PI*2, true);</div><div class="line">    cxt.strokeStyle = &apos;#ffffff&apos;;</div><div class="line">	cxt.stroke();</div><div class="line">	cxt.closePath();</div><div class="line"></div><div class="line">	cxt.beginPath();</div><div class="line">	cxt.arc(180, 50, 40, 0, Math.PI*2, true);</div><div class="line">    cxt.strokeStyle = &apos;#ffffff&apos;;</div><div class="line">	cxt.stroke();</div><div class="line">	cxt.closePath();</div><div class="line"></div><div class="line">	cxt.beginPath();</div><div class="line">	cxt.arc(130, 60, 60, Math.PI*0.25, Math.PI*0.75, false);</div><div class="line">    cxt.strokeStyle = &apos;#ffffff&apos;;</div><div class="line">	cxt.stroke();</div><div class="line">	cxt.closePath();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>以上，是对canvas的基础知识总结。<br>有时间将尝试前端动画。</p>
+</ol>
+<p>这一句就会出错。根据函数式编程的思想，每个函数都可以看为是一个变量而将K赋值后，调用k.py时就会出现问题。</p>
+<h2 id="MATLAB实现"><a href="#MATLAB实现" class="headerlink" title="MATLAB实现"></a>MATLAB实现</h2><p>之前一直在用MATLAB做聚类算法的一些优化，其次就是数模的一些常用算法，对于别的算法，还真是没有上手编过，基础还在，思想还在，当然要动手编一下，也是不希望在学python的同时对MATLAB逐渐陌生吧。</p>
+<p>首先，建立KNN.m文件，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">%% KNN</div><div class="line">clear all</div><div class="line">clc</div><div class="line">%% data</div><div class="line">trainData = [1.0,2.0;1.2,0.1;0.1,1.4;0.3,3.5];</div><div class="line">trainClass = [1,1,2,2];</div><div class="line">testData = [0.5,2.3];</div><div class="line">k = 3;</div><div class="line"></div><div class="line">%% distance</div><div class="line">row = size(trainData,1);</div><div class="line">col = size(trainData,2);</div><div class="line">test = repmat(testData,row,1);</div><div class="line">dis = zeros(1,row);</div><div class="line">for i = 1:row</div><div class="line">    diff = 0;</div><div class="line">    for j = 1:col</div><div class="line">        diff = diff + (test(i,j) - trainData(i,j)).^2;</div><div class="line">    end</div><div class="line">    dis(1,i) = diff.^0.5;</div><div class="line">end</div><div class="line"></div><div class="line">%% sort</div><div class="line">jointDis = [dis;trainClass];</div><div class="line">sortDis= sortrows(jointDis&apos;);</div><div class="line">sortDisClass = sortDis&apos;;</div><div class="line"></div><div class="line">%% find</div><div class="line">class = sort(2:1:k);</div><div class="line">member = unique(class);</div><div class="line">num = size(member);</div><div class="line"></div><div class="line">max = 0;</div><div class="line">for i = 1:num</div><div class="line">    count = find(class == member(i));</div><div class="line">    if count &gt; max</div><div class="line">        max = count;</div><div class="line">        label = member(i);</div><div class="line">    end</div><div class="line">end</div><div class="line"></div><div class="line">disp(&apos;最终的分类结果为：&apos;);</div><div class="line">fprintf(&apos;%d\n&apos;,label)</div></pre></td></tr></table></figure></p>
+<p>运行之后的结果是，最终的分类结果为：2。和预期结果一样。</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>之前，对KNN进行了一个简单的验证，今天我们使用KNN改进约会网站的效果，个人理解，这个问题也可以转化为其它的比如各个网站迎合客户的喜好所作出的推荐之类的，当然，今天的这个例子功能也实在有限。</p>
+<p>在这里根据一个人收集的约会数据，根据主要的样本特征以及得到的分类，对一些未知类别的数据进行分类，大致就是这样。</p>
+<p>首先建立一个文件，例如date.py,具体的代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div></pre></td><td class="code"><pre><div class="line">#coding:utf-8</div><div class="line"></div><div class="line">from numpy import *</div><div class="line">import operator</div><div class="line">from collections import Counter</div><div class="line">import matplotlib</div><div class="line">import matplotlib.pyplot as plt</div><div class="line"></div><div class="line"></div><div class="line">###导入特征数据</div><div class="line">def file2matrix(filename):</div><div class="line">    fr = open(filename)</div><div class="line">    contain = fr.readlines()###读取文件的所有内容</div><div class="line">    count = len(contain)</div><div class="line">    returnMat = zeros((count,3))</div><div class="line">    classLabelVector = []</div><div class="line">    index = 0</div><div class="line">    for line in contain:</div><div class="line">        line = line.strip() ###截取所有的回车字符</div><div class="line">        listFromLine = line.split(&apos;\t&apos;)</div><div class="line">        returnMat[index,:] = listFromLine[0:3]###选取前三个元素，存储在特征矩阵中</div><div class="line">        classLabelVector.append(listFromLine[-1])###将列表的最后一列存储到向量classLabelVector中</div><div class="line">        index += 1</div><div class="line">    </div><div class="line">    ##将列表的最后一列由字符串转化为数字，便于以后的计算</div><div class="line">    dictClassLabel = Counter(classLabelVector)</div><div class="line">    classLabel = []</div><div class="line">    kind = list(dictClassLabel)</div><div class="line">    for item in classLabelVector:</div><div class="line">        if item == kind[0]:</div><div class="line">            item = 1</div><div class="line">        elif item == kind[1]:</div><div class="line">            item = 2</div><div class="line">        else:</div><div class="line">            item = 3</div><div class="line">        classLabel.append(item)</div><div class="line">    return returnMat,classLabel#####将文本中的数据导入到列表</div><div class="line"></div><div class="line">##绘图（可以直观的表示出各特征对分类结果的影响程度）</div><div class="line">datingDataMat,datingLabels = file2matrix(&apos;D:\python\Mechine learing in Action\KNN\datingTestSet.txt&apos;)</div><div class="line">fig = plt.figure()</div><div class="line">ax = fig.add_subplot(111)</div><div class="line">ax.scatter(datingDataMat[:,0],datingDataMat[:,1],15.0*array(datingLabels),15.0*array(datingLabels))</div><div class="line">plt.show()</div><div class="line"></div><div class="line">## 归一化数据,保证特征等权重</div><div class="line">def autoNorm(dataSet):</div><div class="line">    minVals = dataSet.min(0)</div><div class="line">    maxVals = dataSet.max(0)</div><div class="line">    ranges = maxVals - minVals</div><div class="line">    normDataSet = zeros(shape(dataSet))##建立与dataSet结构一样的矩阵</div><div class="line">    m = dataSet.shape[0]</div><div class="line">    for i in range(1,m):</div><div class="line">        normDataSet[i,:] = (dataSet[i,:] - minVals) / ranges</div><div class="line">    return normDataSet,ranges,minVals</div><div class="line"></div><div class="line">##KNN算法</div><div class="line">def classify(input,dataSet,label,k):</div><div class="line">    dataSize = dataSet.shape[0]</div><div class="line">    ####计算欧式距离</div><div class="line">    diff = tile(input,(dataSize,1)) - dataSet</div><div class="line">    sqdiff = diff ** 2</div><div class="line">    squareDist = sum(sqdiff,axis = 1)###行向量分别相加，从而得到新的一个行向量</div><div class="line">    dist = squareDist ** 0.5</div><div class="line">    </div><div class="line">    ##对距离进行排序</div><div class="line">    sortedDistIndex = argsort(dist)##argsort()根据元素的值从大到小对元素进行排序，返回下标</div><div class="line"></div><div class="line">    classCount=&#123;&#125;</div><div class="line">    for i in range(k):</div><div class="line">        voteLabel = label[sortedDistIndex[i]]</div><div class="line">        ###对选取的K个样本所属的类别个数进行统计</div><div class="line">        classCount[voteLabel] = classCount.get(voteLabel,0) + 1</div><div class="line">    ###选取出现的类别次数最多的类别</div><div class="line">    maxCount = 0</div><div class="line">    for key,value in classCount.items():</div><div class="line">        if value &gt; maxCount:</div><div class="line">            maxCount = value</div><div class="line">            classes = key</div><div class="line">    return classes</div><div class="line"></div><div class="line">##测试(选取10%测试）</div><div class="line">def datingTest():</div><div class="line">    rate = 0.10</div><div class="line">    datingDataMat,datingLabels = file2matrix(&apos;D:\python\Mechine learing in Action\KNN\datingTestSet.txt&apos;)</div><div class="line">    normMat,ranges,minVals = autoNorm(datingDataMat)</div><div class="line">    m = normMat.shape[0]</div><div class="line">    testNum = int(m * rate)</div><div class="line">    errorCount = 0.0</div><div class="line">    for i in range(1,testNum):</div><div class="line">        classifyResult = classify(normMat[i,:],normMat[testNum:m,:],datingLabels[testNum:m],3)</div><div class="line">        print(&quot;分类后的结果为:,&quot;, classifyResult)</div><div class="line">        print(&quot;原结果为：&quot;,datingLabels[i])</div><div class="line">        if(classifyResult != datingLabels[i]):</div><div class="line">                                  errorCount += 1.0</div><div class="line">    print(&quot;误分率为:&quot;,(errorCount/float(testNum)))</div><div class="line">                                  </div><div class="line">###预测函数</div><div class="line">def classifyPerson():</div><div class="line">    resultList = [&apos;一点也不喜欢&apos;,&apos;有一丢丢喜欢&apos;,&apos;灰常喜欢&apos;]</div><div class="line">    percentTats = float(input(&quot;玩视频所占的时间比?&quot;))</div><div class="line">    miles = float(input(&quot;每年获得的飞行常客里程数?&quot;))</div><div class="line">    iceCream = float(input(&quot;每周所消费的冰淇淋公升数?&quot;))</div><div class="line">    datingDataMat,datingLabels = file2matrix(&apos;D:\python\Mechine learing in Action\KNN\datingTestSet2.txt&apos;)</div><div class="line">    normMat,ranges,minVals = autoNorm(datingDataMat)</div><div class="line">    inArr = array([miles,percentTats,iceCream])</div><div class="line">    classifierResult = classify((inArr-minVals)/ranges,normMat,datingLabels,3)</div><div class="line">    print(&quot;你对这个人的喜欢程度:&quot;,resultList[classifierResult - 1])</div><div class="line">``` </div><div class="line"></div><div class="line">新建test.py文件了解程序的运行结果，代码：</div></pre></td></tr></table></figure></p>
+<p>#coding:utf-8</p>
+<p>from numpy import *<br>import operator<br>from collections import Counter<br>import matplotlib<br>import matplotlib.pyplot as plt</p>
+<p>import sys<br>sys.path.append(“D:\python\Mechine learing in Action\KNN”)<br>import date<br>date.classifyPerson()<br>```</p>
+<p> 以上，是对本次算法的整理总结。</p>
 
       
 
@@ -214,7 +246,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python 机器学习</a>
         		</li>
       		
 		</ul>
@@ -270,7 +302,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/19/Canvas学习/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2015/08/04/机器学习之KNN算法/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -284,20 +316,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/20/gulp学习总结/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/01/01/书摘/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          gulp压缩文件学习总结
+          (no title)
         
       </div>
     </a>
   
-  
-    <a href="/2018/03/13/一个Flag/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">一个Flag</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
