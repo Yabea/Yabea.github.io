@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Python高级用法总结 | ben&#39;s blog</title>
+  <title>【剑指offer】题9：斐波拉契数列 | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Python很棒，它有很多高级用法值得细细思索，学习使用。本文将根据日常使用，总结介绍Python的一组高级特性，包括：列表推导式、迭代器和生成器、装饰器。">
-<meta name="keywords" content="Python">
+  <meta name="description" content="使用Python实现斐波拉契数列">
+<meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python高级用法总结">
-<meta property="og:url" content="http://yoursite.com/2018/02/07/python高级用法总结/index.html">
+<meta property="og:title" content="【剑指offer】题9：斐波拉契数列">
+<meta property="og:url" content="http://yoursite.com/2018/04/07/斐波拉契数列/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="Python很棒，它有很多高级用法值得细细思索，学习使用。本文将根据日常使用，总结介绍Python的一组高级特性，包括：列表推导式、迭代器和生成器、装饰器。">
+<meta property="og:description" content="使用Python实现斐波拉契数列">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-29T15:44:20.641Z">
+<meta property="og:updated_time" content="2018-04-07T14:51:24.607Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python高级用法总结">
-<meta name="twitter:description" content="Python很棒，它有很多高级用法值得细细思索，学习使用。本文将根据日常使用，总结介绍Python的一组高级特性，包括：列表推导式、迭代器和生成器、装饰器。">
+<meta name="twitter:title" content="【剑指offer】题9：斐波拉契数列">
+<meta name="twitter:description" content="使用Python实现斐波拉契数列">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -149,21 +149,21 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-python高级用法总结" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-斐波拉契数列" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Python高级用法总结
+      【剑指offer】题9：斐波拉契数列
     </h1>
   
 
 		
         
-        <a href="/2018/02/07/python高级用法总结/" class="archive-article-date">
-  	<time datetime="2018-02-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-07</time>
+        <a href="/2018/04/07/斐波拉契数列/" class="archive-article-date">
+  	<time datetime="2018-04-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-07</time>
 </a>
         
 
@@ -172,75 +172,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>Python很棒，它有很多高级用法值得细细思索，学习使用。本文将根据日常使用，总结介绍Python的一组高级特性，包括：列表推导式、迭代器和生成器、装饰器。</p>
+<p>使用Python实现斐波拉契数列</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="列表推导（list-comprehensions）"><a href="#列表推导（list-comprehensions）" class="headerlink" title="列表推导（list comprehensions）"></a>列表推导（list comprehensions）</h2><blockquote>
-<p>场景1：将一个三维列表中所有一维数据为a的元素合并，组成新的二维列表。</p>
-</blockquote>
-<p>最简单的方法：新建列表，遍历原三维列表，判断一维数据是否为a，若为a,则将该元素append至新列表中。<br>缺点：代码太繁琐，对于Python而言，执行速度会变慢很多。<br>针对场景1，我们首先应该想到用<strong>列表解析式</strong>来解决处理，一行代码即可解决：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lista = [item for item in array if item[0] == &apos;a&apos;]</div></pre></td></tr></table></figure></p>
-<p>那么，何为列表解析式？<br>官方解释：列表解析式是Python内置的非常<strong>简单</strong>却<strong>强大</strong>的可以用来创建list的生成式。<br><strong>强大具体如何体现？</strong><br>可以看到，使用列表解析式的写法更加简短，除此之外，因为是Python内置的用法，底层使用C语言实现，相较于编写Python代码而言，运行速度更快。</p>
-<blockquote>
-<p>场景2: 对于一个列表，既要遍历索引又要遍历元素。</p>
-</blockquote>
-<p>这里可以使用Python内建函数enumerate，在循环中更好的获取获得索引。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">array = [&apos;I&apos;, &apos;love&apos;, &apos;Python&apos;]</div><div class="line">for i, element in enumerate(array):</div><div class="line">    array[i] = &apos;%d: %s&apos; % (i, seq[i])</div></pre></td></tr></table></figure>
-<p>可以使用列表推导式对其进行重构：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def getitem(index, element):</div><div class="line">    return &apos;%d: %s&apos; % (index, element)</div><div class="line"></div><div class="line">array = [&apos;I&apos;, &apos;love&apos;, &apos;Python&apos;]</div><div class="line">arrayIndex = [getitem(index, element) for index, element in enumerate(array)]</div></pre></td></tr></table></figure>
-<p>据说这种写法更加的Pythonic。</p>
-<blockquote>
-<p>总结：如果要对现有的可迭代对象做一些处理，然后生成新的列表，使用列表推导式将是最便捷的方法。</p>
-</blockquote>
-<h2 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h2><h3 id="迭代器（Iterator）"><a href="#迭代器（Iterator）" class="headerlink" title="迭代器（Iterator）"></a>迭代器（Iterator）</h3><p>这里的迭代可以指for循环，在Python中，对于像list，dict和文件等而言，都可以使用for循环，但是它们并不是迭代器，它们属于可迭代对象。<br><strong>什么可迭代对象</strong><br>最简单的解释：可以使用for…in…语句进行循环的对象，就是可迭代对象（Iterable），可以使用isinstance()方法进行判断。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">from collections import Iterable </div><div class="line">type = isinstance(&apos;python&apos;, Iterable)</div><div class="line">print type</div></pre></td></tr></table></figure></p>
-<p><strong>什么是迭代器</strong><br>迭代器指的是可以使用next()方法来回调的对象，可以对可迭代对象使用iter()方法，将其转换为迭代器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">temp = iter([1, 2, 3])</div><div class="line">print type(temp)</div><div class="line">print next(temp)</div></pre></td></tr></table></figure></p>
-<p>此时temp就是一个迭代器。所以说，迭代器基于两个方法：</p>
+<p>## </p>
+<h3 id="斐波拉契数列"><a href="#斐波拉契数列" class="headerlink" title="斐波拉契数列"></a>斐波拉契数列</h3><p><strong>描述</strong>:输入一个整数n，请你输出斐波那契数列的第n项。<br><strong>递归实现</strong><br>最常见的斐波拉契数列的实现就是通过递归：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def fibonacci(n):</div><div class="line">    if n &lt; 1:</div><div class="line">        return 0</div><div class="line">    if n == 1:</div><div class="line">        return 1</div><div class="line">    return fibonacci(n-1) + fibonacci(n-2)</div></pre></td></tr></table></figure></p>
+<p>但是，递归算法的效率并不高，时间复杂度呈指数递增，可以达到O(2^n)，所以如何优化呢？<br><strong>优化</strong><br>递归算法的时间复杂度之所以这么高，是因为重复的计算太多，那么优化可以理解为避免重复的计算，因此，我们可以将已经计算得到的数据保存起来。<br>利用在该问题中，我们可以通过从下往上计算，根据f(0）和f(1)算出f(2)，以此类推计算出第n项，这种思路的时间复杂度是O(n)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def fibonacci(n):</div><div class="line">    if n &lt; 1:</div><div class="line">        return 0</div><div class="line">    result = []</div><div class="line">    for i in range(n):</div><div class="line">        if i &lt; 2:</div><div class="line">            result.append(1)</div><div class="line">        else:</div><div class="line">            result.append(result[-1] + result[-2])</div><div class="line">    return result</div></pre></td></tr></table></figure></p>
+<h3 id="斐波拉契数列的应用"><a href="#斐波拉契数列的应用" class="headerlink" title="斐波拉契数列的应用"></a>斐波拉契数列的应用</h3><h4 id="跳台阶问题"><a href="#跳台阶问题" class="headerlink" title="跳台阶问题"></a>跳台阶问题</h4><p><strong>描述</strong>：一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。<br><strong>分析</strong></p>
 <ul>
-<li>next：返回下一个项目</li>
-<li><em>iter</em> 返回迭代器本身<br>可理解为可被next()函数调用并不断返回下一个值的对象就是迭代器，在定义一个装饰器时将需要同时定义这两个方法。<br><strong>迭代器的优势</strong><br>在构建迭代器时，不是将所有的元素一次性的加载，而是等调用next方法时返回元素，所以不需要考虑内存的问题。<br><strong>迭代器应用场景</strong><br>那么，具体在什么场景下可以使用迭代器呢？</li>
-<li>数列的数据规模巨大</li>
-<li>数列有规律，但是不能使用列表推导式描述。</li>
+<li>n=1时，只有一种跳法；</li>
+<li>n=2时，有两种跳法；</li>
+<li>n&gt;2时，第一次跳的时候就有两种不同的选择，如果第一次跳1级台阶，则剩下的台阶为f(n-1)，若第一次跳2级台阶，则剩下的台阶为f(n-2)。因此跳n级台阶的不同跳法的总数为f(n) = f(n-1) + f(n-2)，也就是斐波拉契数列。</li>
 </ul>
-<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><p>生成器是一种高级迭代器，使得需要返回一系列元素的函数所需的代码更加的简单和高效（不像创建迭代器代码那般冗长）。<br><strong>生成器函数</strong><br>生成器函数基于yield指令，可以暂停一个函数并返回中间结果。当需要一个将返回一个序列或在循环中执行的函数时，就可以使用生成器，因为当这些元素被传递到另一个函数中进行后续处理时，一次返回一个元素可以有效的提升整体性能。<br>常见的应用场景是使用生成器的流数据缓冲区。</p>
-<p><strong>生成器表达式</strong><br>生成式表达式是一种实现生成器的便捷方式，将列表推导式的中括号替换为圆括号。<br>和列表推导式的区别：列表生成式可以直接创建一个表，但是生成器表达式是一种边循环边计算，使得列表的元素可以在循环过程中一个个的推算出来，不需要创建完整的列表，从而节省了大量的空间。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g = (x * x for x in range(10))</div></pre></td></tr></table></figure>
-<blockquote>
-<p>总结：生成器是一种高级迭代器。生成器的优点是延迟计算，一次返回一个结果，这样非常适用于大数据量的计算。但是，使用生成器必须要注意的一点是：生成器只能遍历一次。</p>
-</blockquote>
-<h2 id="lambda表达式（匿名函数）"><a href="#lambda表达式（匿名函数）" class="headerlink" title="lambda表达式（匿名函数）"></a>lambda表达式（匿名函数）</h2><p>lambda表达式纯粹是为了编写简单函数而设计，起到了一个函数速写的作用，使得简单函数可以更加简洁的表示。<br><strong>lambda和def的区别</strong><br>lambda表达式可以省去定义函数的过程，让代码更加的简洁，适用于简单函数，编写处理更大业务的函数需要使用def定义。<br><strong>lambda表达式常搭配map(), reduce(), filter()函数使用</strong> </p>
+<h4 id="变态跳台阶问题"><a href="#变态跳台阶问题" class="headerlink" title="变态跳台阶问题"></a>变态跳台阶问题</h4><p><strong>描述</strong>：一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。<br><strong>分析</strong></p>
 <ul>
-<li>map(): map函数接受两个参数，一个是函数，一个是序列，其中，函数可以接收一个或者多个参数。map将传入的函数依次作用于序列中的每个元素，将结果作为新的列表返回。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#将一个列表中的数字转换为字符串</div><div class="line">map(str, [1,2,3,4,5,6])</div></pre></td></tr></table></figure>
-</li>
+<li>当n=1时，有一种跳法</li>
+<li>当n=2时，有两种跳法</li>
+<li>当n&gt;2时，第一次有n种跳法，跳1级，则剩下的跳法是f(n-1);跳2级，则剩下的跳法是f(n-2);跳3级，则剩下的跳法是f(n-3)…</li>
 </ul>
-<ul>
-<li><p>reduce()：函数接收两个参数，一个是函数，另一个是序列，但是，函数必须接收两个参数reduce把结果继续和序列的下一个元素做累积计算，其效果就是reduce(f, [x1, x2, x3, x4]) = f(f(f(x1, x2), x3), x4)。</p>
-<ul>
-<li>filter()：该函数用于筛选，将传入的函数，依次作用于每个元素，然后根据函数的返回值是True还是False，决定是留下还是丢弃该元素。</li>
-</ul>
-</li>
-</ul>
-<h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p>装饰器本质是一个Python函数，它可以让其它函数在没有任何代码变动的情况下增加额外功能。有了装饰器，我们可以抽离出大量和函数功能本身无关的雷同代码并继续重用。经常用于具有切面需求的场景：包括插入日志、性能测试、事务处理、缓存和权限校验等。<br>那么为什么要引入装饰器呢？</p>
-<blockquote>
-<p>场景：计算一个函数的执行时间。</p>
-</blockquote>
-<p>一种方法就是定义一个函数，用来专门计算函数的运行时间，然后运行时间计算完成之后再处理真正的业务代码，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">import time </div><div class="line"></div><div class="line">def get_time(func):</div><div class="line">    startTime = time.time()</div><div class="line">    func()</div><div class="line">    endTime = time.time()</div><div class="line">    processTime = (endTime - startTime) * 1000</div><div class="line">    print &quot;The function timing is %f ms&quot; %processTime</div><div class="line"></div><div class="line">def myfunc():</div><div class="line">    print &quot;start func&quot;</div><div class="line">    time.sleep(0.8)</div><div class="line">    print &quot;end func&quot;</div><div class="line"></div><div class="line">get_time(myfunc)</div><div class="line">myfunc()</div></pre></td></tr></table></figure></p>
-<p>但是这段代码的逻辑破坏了原有的代码逻辑，就是对所有func函数的调用都需要使用get_time(func)来实现。<br>那么，有没有更好的展示方式呢？当然有，那就是装饰器。<br><strong>编写简单装饰器</strong><br>结合上述实例，编写装饰器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">def get_time(func):</div><div class="line">    def wrapper():</div><div class="line">        startTime = time.time()</div><div class="line">        func()</div><div class="line">        endTime = time.time()</div><div class="line">        processTime = (endTime - startTime) * 1000</div><div class="line">        print &quot;The function timing is %f ms&quot; %processTime</div><div class="line">    return wrapper</div><div class="line">    </div><div class="line">print &quot;myfunc is:&quot;, myfunc.__name__</div><div class="line">myfunc = get_time(myfunc)</div><div class="line">print &quot;myfunc is: &quot;, myfunc.__name__</div><div class="line">myfunc()</div></pre></td></tr></table></figure></p>
-<p>这样，一个简单的完整的装饰器就实现了，可以看到，装饰器并没有影响函数的执行逻辑和调用。<br>在Python中，可以使用”@”语法糖来精简装饰器的代码，将上例更改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@ get_time</div><div class="line">def myfunc():</div><div class="line">    print &quot;start func&quot;</div><div class="line">    time.sleep(0.8)</div><div class="line">    print &quot;end func&quot;</div><div class="line"></div><div class="line">print &quot;myfunc is: &quot;, myfunc.__name__</div><div class="line">myfunc()</div></pre></td></tr></table></figure></p>
-<p><strong> 装饰器的调用顺序</strong><br>装饰器可以叠加使用，若多个装饰器同时装饰一个函数，那么装饰器的调用顺序和@语法糖的声明顺序相反，也就是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@decorator1</div><div class="line">@decorator2</div><div class="line">def func():</div><div class="line">    pass</div></pre></td></tr></table></figure></p>
-<p>等效于：</p>
-<blockquote>
-<p>func = decorator1(decorator2(func()))</p>
-</blockquote>
-<p><strong>被装饰的函数带参数</strong><br>上述实例中，myfunc()是没有参数的，那如果添加参数的话，装饰器该如何编写呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#被装饰的函数带参数</div><div class="line">def get_time3(func):</div><div class="line">    def wrapper(*args, **kwargs):</div><div class="line">        startTime = time.time()</div><div class="line">        func(*args, **kwargs)</div><div class="line">        endTime = time.time()</div><div class="line">        processTime = (endTime - startTime) * 1000</div><div class="line">        print &quot;The function timing is %f ms&quot; %processTime</div><div class="line">    return wrapper</div><div class="line">@ get_time3</div><div class="line">def myfunc2(a):</div><div class="line">    print &quot;start func&quot;</div><div class="line">    print a</div><div class="line">    time.sleep(0.8)</div><div class="line">    print &quot;end func&quot;</div><div class="line"></div><div class="line">a = &quot;test&quot;</div><div class="line">myfunc2(a)</div></pre></td></tr></table></figure></p>
-<p><strong>带参数的装饰器</strong><br>装饰器有很大的灵活性，它本身支持参数，例如在上述实例中，@get_time装饰器唯一的参数就是执行业务的函数，当然也可以在装饰器中添加参数，加以逻辑判断。</p>
-<h3 id="内置装饰器"><a href="#内置装饰器" class="headerlink" title="内置装饰器"></a>内置装饰器</h3><p>Python中，常见的类装饰器包括：@staticmathod、@classmethod和@property</p>
-<ul>
-<li>@staticmethod：类的静态方法，跟成员方法的区别是没有self参数，并且可以在类不进行实例化的情况下调用。</li>
-<li>@classmethod：跟成员方法的区别是接收的第一个参数不是self，而是cls（当前类的具体类型）</li>
-<li>@property：表示可以直接通过类实例直接访问的信息。</li>
-</ul>
-<h2 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h2><p>with语句是一种与异常处理相关的功能。with语句适用于对资源进行访问的场合，确保不管使用过程中是否发生异常都会执行必要的“清理”操作，释放资源，比如文件使用后自动关闭、线程中锁的自动获取和释放等。</p>
-<h3 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h3><p>有了上下文管理器，with语句才能工作，那么什么是上下文管理器？<br><strong>上下文管理协议</strong>：包含了<strong>enter</strong>()和<strong>exit</strong>()，支持该协议的对象必须要实现这两个方法。<br><strong>上下文管理器</strong>:支持上下文管理协议的对象，定义了执行with语句时要建立的运行时上下文，</p>
-<p>以上，是本次整理的Python高级用法，本文将持续更新。</p>
+<p>所以，f(n)=f(n-1)+f(n-2)+f(n-3)+…+f(1)<br>可得出：f(n) = 2 * f(n-1)<br>用数学归纳法可以得到f(n) = 2^(n-1)</p>
+<p><strong>实现</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import math</div><div class="line"></div><div class="line">def jumpFloorII(number):</div><div class="line">    # write code here</div><div class="line">    if number &lt;= 1:</div><div class="line">        return 1</div><div class="line">    return pow(2, number-1)</div></pre></td></tr></table></figure></p>
 
       
 
@@ -256,7 +207,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指offer</a>
         		</li>
       		
 		</ul>
@@ -312,7 +263,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/02/07/python高级用法总结/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/07/斐波拉契数列/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -326,18 +277,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/02/20/Flask开发之实现验证码功能/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Flask开发之实现验证码功能
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/29/echarts使用总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">echarts使用总结</div>
+    <a href="/2018/03/31/我的博文总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的博文汇总</div>
       <i class="icon-circle-right"></i>
     </a>
   
