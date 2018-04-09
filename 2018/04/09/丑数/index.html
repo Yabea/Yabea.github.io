@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>CSRF跨站请求伪造 | ben&#39;s blog</title>
+  <title>丑数 | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CSRF的全称为（Cross-site request forgery)，跨站请求伪造。其实就是可以劫持其它用户去进行一些请求。本文对该漏洞进行介绍。">
-<meta name="keywords" content="安全">
+  <meta name="description" content="使用Python编写实现丑数的判断。">
+<meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSRF跨站请求伪造">
-<meta property="og:url" content="http://yoursite.com/2017/09/23/CSRF跨站请求伪造/index.html">
+<meta property="og:title" content="丑数">
+<meta property="og:url" content="http://yoursite.com/2018/04/09/丑数/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="CSRF的全称为（Cross-site request forgery)，跨站请求伪造。其实就是可以劫持其它用户去进行一些请求。本文对该漏洞进行介绍。">
+<meta property="og:description" content="使用Python编写实现丑数的判断。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-29T14:45:49.932Z">
+<meta property="og:updated_time" content="2018-04-09T01:45:16.721Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSRF跨站请求伪造">
-<meta name="twitter:description" content="CSRF的全称为（Cross-site request forgery)，跨站请求伪造。其实就是可以劫持其它用户去进行一些请求。本文对该漏洞进行介绍。">
+<meta name="twitter:title" content="丑数">
+<meta name="twitter:description" content="使用Python编写实现丑数的判断。">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -149,21 +149,21 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CSRF跨站请求伪造" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-丑数" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      CSRF跨站请求伪造
+      丑数
     </h1>
   
 
 		
         
-        <a href="/2017/09/23/CSRF跨站请求伪造/" class="archive-article-date">
-  	<time datetime="2017-09-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-23</time>
+        <a href="/2018/04/09/丑数/" class="archive-article-date">
+  	<time datetime="2018-04-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-09</time>
 </a>
         
 
@@ -171,17 +171,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>CSRF的全称为（Cross-site request forgery)，跨站请求伪造。<br>其实就是可以劫持其它用户去进行一些请求。本文对该漏洞进行介绍。</p>
-</blockquote>
+        <p>使用Python编写实现丑数的判断。</p>
 <a id="more"></a>
-<h2 id="挖掘经验"><a href="#挖掘经验" class="headerlink" title="挖掘经验"></a>挖掘经验</h2><p>因为CSRF主要用于越权操作，因此所有的漏洞都出现在有权限控制的地方，像管理后台、会员中心、论坛帖子和交易管理等。<br>挖掘的<br>黑盒测试：先搭建好环境，然后打开几个有非静态操作的页面，抓包查看有没有token，如果没有token，再请求这个页面，并且不带referer，如果返回的数据还是一样的，那么就很有可能存在CSRF漏洞。<br>白盒测试：在核心功能中，搜索token，查看这些文件中有没有验证token和referer。</p>
-<h2 id="漏洞防范"><a href="#漏洞防范" class="headerlink" title="漏洞防范"></a>漏洞防范</h2><p>防止CSRF最主要的是解决可信的问题，也就是说，即使是管理员提交到服务器上的数据，都不一定是完全可信的。针对CSRF的防御一般可以分为两点：</p>
-<ol>
-<li>增加token/referer的验证，从而避免img标签请求的水坑攻击；</li>
-<li>增加验证码。</li>
-</ol>
-<h3 id="token验证"><a href="#token验证" class="headerlink" title="token验证"></a>token验证</h3><p>token就是“令牌”，主要是用来进行身份验证的，在验证方式中，使用token进行验证的方式是目前使用最多的一种，效果也是最好的。<br>验证的方法：在页面或者cookie里面添加一个不可预测的字符串，然后服务器在接收操作请求的时候验证这个字符串是不是上次访问留下的即可判断是不是可信请求。因为如果没有访问上一个界面，是无法得到这个token的。</p>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>把只包含因子2、3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但14不是，因为它包含因子7。 习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><strong>1. 一一遍历法</strong><br>对于该问题，最容易想到的方法是遍历法，从1开始遍历，如果遍历到的数是丑数的话就count++，直至count=N停止遍历。</p>
+<p>该算法很简洁，但是需要对每个整数进行判断，即使一个数字不是丑数，我们也需要对它进行计算。因此该算法的计算效率不高。</p>
+<p><strong>2. 空间换时间法：时间效率高</strong><br>根据定义，我们知道丑数可以通过另一个丑数乘以2,3,5得到，因此我们可以创建一个数组，里面的数字都是排好序的丑数，且每个丑数都是前面的丑数乘以2,3,5得到的。<br>按照这种思路，我们发现不需要在非丑数的整数上进行任何运算，虽然增加了空间效率，但时间效率有了很明显的提升。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>使用Python2.7X实现该算法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">def uglyNumber(N):</div><div class="line">    if index &lt; 1:</div><div class="line">        return 0</div><div class="line">    data = [1]</div><div class="line">    index1 = 0</div><div class="line">    index2 = 0</div><div class="line">    index3 = 0</div><div class="line">    temp = 0</div><div class="line">    </div><div class="line">    while temp &lt; index:</div><div class="line">        temp += 1</div><div class="line">        element = min(data[index1] * 2, data[index2] * 3, data[index3] *5)</div><div class="line">        data.append(element)</div><div class="line">        if data[index1] * 2 == element:</div><div class="line">            index1 += 1</div><div class="line">        if data[index2] * 3 == element:</div><div class="line">            index2 += 1</div><div class="line">        if data[index3] * 5 == element:</div><div class="line">            index3 += 1</div><div class="line">    return data[index-1]</div></pre></td></tr></table></figure></p>
 
       
 
@@ -197,7 +193,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指offer</a>
         		</li>
       		
 		</ul>
@@ -253,7 +249,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/09/23/CSRF跨站请求伪造/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/09/丑数/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -267,18 +263,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/11/05/跨站脚本攻击/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/01/01/我的博文总结/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          跨站脚本攻击XSS
+          【置顶】我的博文汇总
         
       </div>
     </a>
   
   
-    <a href="/2017/02/22/python多线程机制/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python多线程机制</div>
+    <a href="/2018/04/08/你是如此耀眼，我又怎能向平凡低头/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">你是如此耀眼，我又怎能向平凡低头</div>
       <i class="icon-circle-right"></i>
     </a>
   
