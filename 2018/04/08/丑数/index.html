@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Python操作Mysql数据库总结 | ben&#39;s blog</title>
+  <title>【剑指offer】丑数 | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。">
-<meta name="keywords" content="Python">
+  <meta name="description" content="使用Python编写实现丑数的判断。">
+<meta name="keywords" content="剑指offer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python操作Mysql数据库总结">
-<meta property="og:url" content="http://yoursite.com/2018/01/10/Python操作Mysql数据库/index.html">
+<meta property="og:title" content="【剑指offer】丑数">
+<meta property="og:url" content="http://yoursite.com/2018/04/08/丑数/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。">
+<meta property="og:description" content="使用Python编写实现丑数的判断。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-09T16:19:26.498Z">
+<meta property="og:updated_time" content="2018-04-09T01:50:09.253Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python操作Mysql数据库总结">
-<meta name="twitter:description" content="最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。">
+<meta name="twitter:title" content="【剑指offer】丑数">
+<meta name="twitter:description" content="使用Python编写实现丑数的判断。">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -149,21 +149,21 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Python操作Mysql数据库" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-丑数" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Python操作Mysql数据库总结
+      【剑指offer】丑数
     </h1>
   
 
 		
         
-        <a href="/2018/01/10/Python操作Mysql数据库/" class="archive-article-date">
-  	<time datetime="2018-01-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
+        <a href="/2018/04/08/丑数/" class="archive-article-date">
+  	<time datetime="2018-04-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-08</time>
 </a>
         
 
@@ -171,48 +171,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>最近工作上，需要使用Python合并多个结构不一的mysql数据库，许久没有使用，操作起来略显生疏，所以还是想要总结一下，方便以后使用。</p>
-</blockquote>
+        <p>使用Python编写实现丑数的判断。</p>
 <a id="more"></a>
-<h2 id="连接Mysql数据库"><a href="#连接Mysql数据库" class="headerlink" title="连接Mysql数据库"></a>连接Mysql数据库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import MYSQLdb as mdb</div><div class="line">con = mdb.connect(&apos;localhost&apos;, &apos;name&apos;, &apos;password&apos;, &apos;databasename&apos;, charset=&apos;utf8&apos;)</div></pre></td></tr></table></figure>
-<h2 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cursor = con.cursor()</div><div class="line"></div><div class="line">sql = &quot;&quot;&quot;</div><div class="line">    create table if not exists users(</div><div class="line">    id int(11) not null auto_increment primary key,</div><div class="line">    name varchar(128),</div><div class="line">    teamid int(11),</div><div class="line">    constraint foreign key(teamid) references Teams(id)</div><div class="line">    )</div><div class="line">&quot;&quot;&quot;</div><div class="line">cursor.execute(sql)</div></pre></td></tr></table></figure>
-<h2 id="Mysql常用命令"><a href="#Mysql常用命令" class="headerlink" title="Mysql常用命令"></a>Mysql常用命令</h2><ol>
-<li>将某个.sql文件导入mysql数据库</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">create database 数据库名</div><div class="line">use 数据库名</div><div class="line">source /path/.sql</div></pre></td></tr></table></figure>
-<ol>
-<li><p>将mysql中某个数据库导出为.sql文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p 数据库名 &gt; 导出的文件名</div></pre></td></tr></table></figure>
-</li>
-<li><p>将数据库中的文件导出为.excel文件<br>首先查询本机mysql导出的安全目录，使用命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show global variables like &apos;%secure%&apos;;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>然后，切换到要导出的mysql数据库中，使用命令将其导出为.txt文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select name,email from users into outfile &apos;/var/lib/mysql-files/test.txt&apos;;</div></pre></td></tr></table></figure></p>
-<p>但是存入的mysql-fils一般是只有管理员才能打开的文件夹，这里需要切换权限。</p>
-<ol>
-<li><p>更新数据库中的某个字段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update table set name=&apos; &apos; where id = &apos; &apos;</div></pre></td></tr></table></figure>
-</li>
-<li><p>向数据库中的某个表中添加某个字段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">insert into user (userid,score) values (16,0);</div></pre></td></tr></table></figure>
-</li>
-<li><p>向已有的数据库表中，向固定的某个字段后添加一个字段：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter table tablename add id_name 类型 after 已有的字段</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter table team add userid varchar(11) after teamid</div></pre></td></tr></table></figure></p>
-<ol>
-<li><p>向数据库中已有的某个字段设置默认值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update tablename set 字段=0</div></pre></td></tr></table></figure>
-</li>
-<li><p>更改mysql数据库中字段的排列位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter table 表名 modify 字段一 数据类型  after 字段二</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>表示将字段一放置在字段二之后</p>
-<h2 id="遇到的问题总结"><a href="#遇到的问题总结" class="headerlink" title="遇到的问题总结"></a>遇到的问题总结</h2><p>关于数据库中文乱码的问题解决方案，将数据库中数据导入数据库中出现中文乱码的话，那很可能存在的一个问题就是编码不统一。<br>若编码不正确的话，那一定是编码的格式不够统一，对于中文，可以统一设置成utf-8编码。<br>需要注意的是，这里需同时将mysql配置文件处对应的客户端和服务端的编码格式进行修改。</p>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>把只包含因子2、3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但14不是，因为它包含因子7。 习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><strong>1. 一一遍历法</strong><br>对于该问题，最容易想到的方法是遍历法，从1开始遍历，如果遍历到的数是丑数的话就count++，直至count=N停止遍历。</p>
+<p>该算法很简洁，但是需要对每个整数进行判断，即使一个数字不是丑数，我们也需要对它进行计算。因此该算法的计算效率不高。</p>
+<p><strong>2. 空间换时间法：时间效率高</strong><br>根据定义，我们知道丑数可以通过另一个丑数乘以2,3,5得到，因此我们可以创建一个数组，里面的数字都是排好序的丑数，且每个丑数都是前面的丑数乘以2,3,5得到的。<br>按照这种思路，我们发现不需要在非丑数的整数上进行任何运算，虽然增加了空间效率，但时间效率有了很明显的提升。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>使用Python2.7X实现该算法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">def uglyNumber(N):</div><div class="line">    if index &lt; 1:</div><div class="line">        return 0</div><div class="line">    data = [1]</div><div class="line">    index1 = 0</div><div class="line">    index2 = 0</div><div class="line">    index3 = 0</div><div class="line">    temp = 0</div><div class="line">    </div><div class="line">    while temp &lt; index:</div><div class="line">        temp += 1</div><div class="line">        element = min(data[index1] * 2, data[index2] * 3, data[index3] *5)</div><div class="line">        data.append(element)</div><div class="line">        if data[index1] * 2 == element:</div><div class="line">            index1 += 1</div><div class="line">        if data[index2] * 3 == element:</div><div class="line">            index2 += 1</div><div class="line">        if data[index3] * 5 == element:</div><div class="line">            index3 += 1</div><div class="line">    return data[index-1]</div></pre></td></tr></table></figure></p>
 
       
 
@@ -228,7 +193,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指offer</a>
         		</li>
       		
 		</ul>
@@ -284,7 +249,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/10/Python操作Mysql数据库/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/08/丑数/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -298,18 +263,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/01/13/浅谈Flask开发/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/04/08/你是如此耀眼，我又怎能向平凡低头/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          关于Flask开发
+          你是如此耀眼，我又怎能向平凡低头
         
       </div>
     </a>
   
   
-    <a href="/2018/01/07/2017小结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2017年终总结</div>
+    <a href="/2018/04/07/斐波拉契数列/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【剑指offer】斐波拉契数列</div>
       <i class="icon-circle-right"></i>
     </a>
   
