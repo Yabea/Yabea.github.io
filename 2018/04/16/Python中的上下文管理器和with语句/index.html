@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/2 | ben&#39;s blog</title>
+  <title>Python中的上下文管理器和with语句 | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ben&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/02/index.html">
+  <meta name="description" content="Python2.5之后引入了上下文管理器（context manager），算是Python的黑魔法之一，它用于规定某个对象的使用范围。本文是针对于该功能的思考总结。">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python中的上下文管理器和with语句">
+<meta property="og:url" content="http://yoursite.com/2018/04/16/Python中的上下文管理器和with语句/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
+<meta property="og:description" content="Python2.5之后引入了上下文管理器（context manager），算是Python的黑魔法之一，它用于规定某个对象的使用范围。本文是针对于该功能的思考总结。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-16T16:07:20.560Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ben&#39;s blog">
+<meta name="twitter:title" content="Python中的上下文管理器和with语句">
+<meta name="twitter:description" content="Python2.5之后引入了上下文管理器（context manager），算是Python的黑魔法之一，它用于规定某个对象的使用范围。本文是针对于该功能的思考总结。">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -144,36 +149,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Python中的上下文管理器和with语句" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/20/Flask开发之实现验证码功能/" class="archive-article-date">
-  	<time datetime="2018-02-20T10:02:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/20/Flask开发之实现验证码功能/">Flask开发之实现验证码功能</a>
+    <h1 class="article-title" itemprop="name">
+      Python中的上下文管理器和with语句
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+		
+        
+        <a href="/2018/04/16/Python中的上下文管理器和with语句/" class="archive-article-date">
+  	<time datetime="2018-04-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
+</a>
+        
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Python2.5之后引入了上下文管理器（context manager），算是Python的黑魔法之一，它用于规定某个对象的使用范围。本文是针对于该功能的思考总结。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="为什么需要上下文管理器？"><a href="#为什么需要上下文管理器？" class="headerlink" title="为什么需要上下文管理器？"></a>为什么需要上下文管理器？</h2><p>首先，需要思索下为什么需要引入上下文管理器。<br>在正常情况下，管理各种系统资源（如文件）、数据库连接时，通常是先打开这些资源，执行完相应的业务逻辑，最后关闭资源。<br>举两个例子:</p>
+<ol>
+<li>使用Python打开一个文件写入内容，之后需要关闭这个文件。如果不正常关闭的话可能会在文件操作时出现异常，因为系统允许你打开的文件的最大数是有限的。</li>
+<li>在数据库连接时也是存在类似问题，数据库的连接算是一种比较昂贵的资源，若连接过多而没有及时关闭的话，就可能出现不能继续连接的异常错误。</li>
+</ol>
+<p>但是，很多程序员经常会忘记关闭文件，或者关闭数据库的连接。这时候就引入了<strong>上下文管理器</strong>，它可以在你不需要该对象的时候，自动关闭它。</p>
+<h2 id="上下文管理器怎么使用？"><a href="#上下文管理器怎么使用？" class="headerlink" title="上下文管理器怎么使用？"></a>上下文管理器怎么使用？</h2><p>上下文管理器的语法是：with…as…</p>
+<p><strong>实例：文件操作</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">print &quot;不使用上下文管理器&quot;</div><div class="line">print &quot;*&quot; * 30</div><div class="line">f = open(&apos;file.py&apos;, &apos;w&apos;)</div><div class="line">print f.closed</div><div class="line">f.write(&quot;# Hello World&quot;)</div><div class="line">f.close()</div><div class="line">print f.closed</div><div class="line"></div><div class="line">print &quot;\n使用上下文管理器&quot;</div><div class="line">print &quot;*&quot; * 30</div><div class="line">with open(&quot;file.py&quot;, &apos;w&apos;) as f:</div><div class="line">    print f.closed</div><div class="line">    f.write(&apos;# Hello Python&apos;)</div><div class="line">print f.closed</div></pre></td></tr></table></figure></p>
+<p>这里通过.closed比较，我们可以看到上下文管理器可以自动关闭文件，对于上下文管理器而言，有隶属于它的程序块，当隶属于它的程序块执行结束的时候（判断缩进），上下文管理器将自动关闭文件。<br>上述实例，也可以使用try…except…来实现，同样可以很直观的看到使用with…as…语句之后，代码确实相对更加简洁。</p>
+<h2 id="上下文管理实现机制"><a href="#上下文管理实现机制" class="headerlink" title="上下文管理实现机制"></a>上下文管理实现机制</h2><p>因为文件对象是Python的内置对象，内置了上下文管理的特殊方法，所以它可以使用with语句。在Python中，任何对象，只要实现了上下文管理，就可以使用with语句，实现上下文管理需要通过<strong>enter</strong>和<strong>exit</strong>这两个方法来实现。<br><strong>关于这两个方法：</strong></p>
+<ul>
+<li><strong>enter</strong>(self)：进入该对象时调用此方法，返回值将放入with…as…语句中的as说明的变量中</li>
+<li><strong>exit</strong>(self, type, value, tb):离开上下文管理器时调用该方法，如果有异常出现，返回False，type、value和tb将分别表示异常的类型、值和追踪信息，传递出上下文显示；如果没有异常，则三个变量的值均为None。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">with 上下文管理器：</div><div class="line">    语法体</div></pre></td></tr></table></figure>
+<p>当with语句遇到上下文管理器时，就会在执行语法体之前，先执行<strong>enter</strong>方法，然后再执行语法体，执行完语法体之后，执行<strong>exit</strong>方法。</p>
+<h2 id="上下文管理器实现"><a href="#上下文管理器实现" class="headerlink" title="上下文管理器实现"></a>上下文管理器实现</h2><p>使用Python2.7X实现一个上下文管理器:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Context(object):</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        print &quot;实例化一个对象&quot;</div><div class="line"></div><div class="line">    def __enter__(self):</div><div class="line">        print &quot;获取该对象&quot;</div><div class="line"></div><div class="line">    def __exit__(self, exc_type, exc_val, exc_tb):</div><div class="line">        print &quot;退出该对象&quot;</div><div class="line"></div><div class="line">temp = Context()</div><div class="line"></div><div class="line">with temp:</div><div class="line">    print &quot;执行体&quot;</div></pre></td></tr></table></figure></p>
+<p>这样，<strong>enter</strong>方法和<strong>exit</strong>方法的调用过程就很明晰。</p>
+<p><strong>contextLib</strong><br>在contextlib中，提供了contextmanager装饰器，通过yield返回函数将函数分隔为两部分，yield之前的语句在<strong>enter</strong>中执行，yield之后的语句在<strong>exit</strong>中执行，简化了上下文管理器的实现方式：</p>
+<blockquote>
+<p><strong>总结：</strong>通过上下文管理器，我们可以更好的控制对象在不同区间的特性，并且可以使用with语句替代try…except方法，使得代码更加的简洁，主要的使用场景是访问资源，可以保证不管过程中是否发生错误或者异常都会执行相应的清理操作，释放出访问的资源。</p>
+</blockquote>
+
+      
+
+         
+        
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -185,57 +218,121 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/16/Python中的上下文管理器和with语句/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/07/python高级用法总结/" class="archive-article-date">
-  	<time datetime="2018-02-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-07</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/01/01/我的博文总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          【置顶】我的博文汇总
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/15/AngularJS学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AngularJS学习思考</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/07/python高级用法总结/">Python高级用法总结</a>
-    </h1>
+  <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2158654"></script>
+<!-- UY END -->
+  
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -266,8 +363,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
