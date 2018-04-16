@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 旧事 | ben&#39;s blog</title>
+  <title>AngularJS学习思考 | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ben&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/旧事/index.html">
+  <meta name="description" content="简介AngulaJS是一个JS框架，是一个以JS编写的库，它是以一个JS文件形式发布的，可通过script标签添加到网页中，是一种设计动态web应用的结构框架，可以实现对HTML标签的增强，并且能和其它框架合作融洽。它更适合开发一些数据操作比较多的应用，为此而引入了一些非常棒的特性，包括模板机制、数据绑定、模块、指令、依赖注入和路由，这样可以通过数据与模板的绑定，让我们摆脱繁琐的DOM操作。">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS学习思考">
+<meta property="og:url" content="http://yoursite.com/2018/04/15/AngularJS学习/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
+<meta property="og:description" content="简介AngulaJS是一个JS框架，是一个以JS编写的库，它是以一个JS文件形式发布的，可通过script标签添加到网页中，是一种设计动态web应用的结构框架，可以实现对HTML标签的增强，并且能和其它框架合作融洽。它更适合开发一些数据操作比较多的应用，为此而引入了一些非常棒的特性，包括模板机制、数据绑定、模块、指令、依赖注入和路由，这样可以通过数据与模板的绑定，让我们摆脱繁琐的DOM操作。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-16T05:49:12.385Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ben&#39;s blog">
+<meta name="twitter:title" content="AngularJS学习思考">
+<meta name="twitter:description" content="简介AngulaJS是一个JS框架，是一个以JS编写的库，它是以一个JS文件形式发布的，可通过script标签添加到网页中，是一种设计动态web应用的结构框架，可以实现对HTML标签的增强，并且能和其它框架合作融洽。它更适合开发一些数据操作比较多的应用，为此而引入了一些非常棒的特性，包括模板机制、数据绑定、模块、指令、依赖注入和路由，这样可以通过数据与模板的绑定，让我们摆脱繁琐的DOM操作。">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -144,136 +149,286 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-AngularJS学习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AngularJS学习思考
+    </h1>
+  
+
+		
+        
+        <a href="/2018/04/15/AngularJS学习/" class="archive-article-date">
+  	<time datetime="2018-04-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
+</a>
+        
+
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>AngulaJS是一个JS框架，是一个以JS编写的库，它是以一个JS文件形式发布的，可通过script标签添加到网页中，是一种设计动态web应用的结构框架，可以实现对HTML标签的增强，并且能和其它框架合作融洽。<br><strong>它更适合开发一些数据操作比较多的应用</strong>，为此而引入了一些非常棒的特性，包括模板机制、数据绑定、模块、指令、依赖注入和路由，这样可以通过数据与模板的绑定，让我们摆脱繁琐的DOM操作。</p>
+<a id="more"></a>
+<blockquote>
+<p>通常将脚本放置在<body>元素的底部，因为这样可以使得HTML的加载不受制于脚本加载，可以提高网页的加载速度。</body></p>
+</blockquote>
+<h3 id="AngularJS的作用"><a href="#AngularJS的作用" class="headerlink" title="AngularJS的作用"></a>AngularJS的作用</h3><p>AngularJS可以使得单一界面应用程序的开发变得更加的容易。</p>
+<ul>
+<li>可以将应用程序数据绑定到HTML元素</li>
+<li>可以克隆和重复HTML元素</li>
+<li>隐藏和显示HTML元素</li>
+<li>可以在HTML元素“背后”添加代码</li>
+<li>支持输入验证</li>
+</ul>
+<p>举一个最简单的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">&lt;script src=&quot;http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;div ng-app=&quot;&quot;&gt;</div><div class="line">  &lt;p&gt;您的名字 : &lt;input type=&quot;text&quot; ng-model=&quot;name&quot;&gt;&lt;/p&gt;</div><div class="line">  &lt;h1&gt;Hello &#123;&#123;name&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="AngularJS表达式"><a href="#AngularJS表达式" class="headerlink" title="AngularJS表达式"></a>AngularJS表达式</h2><p>AngularJS中使用表达式将数据绑定到HTML。<br>AngularJS的表达式一般写在双大括号中，如：，它的表达式类似于JavaScript表达式，可以包含文字、运算符和变量。表达式将数据绑定到HTM中（和ng-bind指令类似），将在表达式书写的位置中输出数据。</p>
+<h2 id="AngularJS指令"><a href="#AngularJS指令" class="headerlink" title="AngularJS指令"></a>AngularJS指令</h2><p>Angular通过指令来扩展HTML，当网页加载完毕，AngularJS自动开启。</p>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><p>AngularJS指令用来扩展HTML属性，带有是通过ng-directives扩展了HTML。前缀ng-。常见的命令包括：</p>
+<ul>
+<li>ng-init初始化AngularJS应用程序变量</li>
+<li>ng-app指令定义了一个AngularJS应用程序</li>
+<li>ng-modal指令将元素值绑定到应用程序</li>
+<li>ng-bind指令将应用程序数据绑定到HTML视图</li>
+<li>ng-repeat指令会重复一个HTML元素。</li>
+</ul>
+<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><p>数据绑定的意思是同步AngularJS表达式和Angular数据。比如上述实例中的是通过ng-modal=”name”来进行同步的，当然还可以进行多个同步。<br><strong>这里改变了操作dom的方式</strong>，将操作的方式改变成了直接对应于元素本身的操作。</p>
+<h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h3><p>可以使用.directive函数来添加自定义的指令，要调用自定义指令，HTML元素上需要添加自定义指令名。</p>
+<h2 id="AngularJS模型"><a href="#AngularJS模型" class="headerlink" title="AngularJS模型"></a>AngularJS模型</h2><h3 id="AngularJS-ng-model指令"><a href="#AngularJS-ng-model指令" class="headerlink" title="AngularJS ng-model指令"></a>AngularJS ng-model指令</h3><p>可以进行双向绑定，并验证用户的输入。</p>
+<h2 id="AngularJS的Scope作用域"><a href="#AngularJS的Scope作用域" class="headerlink" title="AngularJS的Scope作用域"></a>AngularJS的Scope作用域</h2><p>Scope作用域是应用在HTML（视图）和Javascript(控制器）之间的纽带，它是一个对象，有可用的方法和属性。<br>可以看到它实现了后端MVC的前端化。</p>
+<h3 id="Scope的使用"><a href="#Scope的使用" class="headerlink" title="Scope的使用"></a>Scope的使用</h3><p>在使用AngularJS创建控制器时，可以将$scope对象当作一个参数传递。<br>AngularJS应用的组成包括：</p>
+<ul>
+<li>view（视图），即HTML</li>
+<li>Model（模型），当前视图中可用的数据</li>
+<li>Controller（控制器），JavaScript函数，可以添加或者修改属性。</li>
+</ul>
+<p>scope是一个JavaScript对象，带有属性和方法，可以在视图和控制器中使用。</p>
+<h2 id="AngularJS控制器"><a href="#AngularJS控制器" class="headerlink" title="AngularJS控制器"></a>AngularJS控制器</h2><p>AngularJS控制器控制AngularJS应用程序的数据，是常规的JavaScript对象，是由标准的JavaScript对象的构造函数创建。</p>
+<ul>
+<li>ng-app指令定义AngularJS应用程序</li>
+<li>ng-controller指令定义了应用程序控制器</li>
+<li>使用$scope对象来调用控制器</li>
+<li>ng-model指令绑定输入域到控制器的属性</li>
+</ul>
+<p><strong>简单实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;personCtrl&quot;&gt;</div><div class="line"></div><div class="line">名: &lt;input type=&quot;text&quot; ng-model=&quot;firstName&quot;&gt;&lt;br&gt;</div><div class="line">姓: &lt;input type=&quot;text&quot; ng-model=&quot;lastName&quot;&gt;&lt;br&gt;</div><div class="line">&lt;br&gt;</div><div class="line">姓名: &#123;&#123;fullName()&#125;&#125;</div><div class="line"></div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">var app = angular.module(&apos;myApp&apos;, []);</div><div class="line">app.controller(&apos;personCtrl&apos;, function($scope) &#123;</div><div class="line">    $scope.firstName = &quot;John&quot;;</div><div class="line">    $scope.lastName = &quot;Doe&quot;;</div><div class="line">    $scope.fullName = function() &#123;</div><div class="line">        return $scope.firstName + &quot; &quot; + $scope.lastName;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="AngularJS过滤器"><a href="#AngularJS过滤器" class="headerlink" title="AngularJS过滤器"></a>AngularJS过滤器</h2><p>过滤器可以使用一个管道字符(|)和一个过滤器添加到表达式或指令中。<br>常见的过滤器包括：</p>
+<ul>
+<li>currency:格式化数字为货币格式</li>
+<li>filter：从数组项中选择一个子集</li>
+<li>lowercase：格式化字符串为小写</li>
+<li>orderBy：根据某个表达式排列数组</li>
+<li>uppercase：格式化字符串为大写</li>
+</ul>
+<h2 id="AngularJS服务"><a href="#AngularJS服务" class="headerlink" title="AngularJS服务"></a>AngularJS服务</h2><p>服务是一个函数或者对象，可以在AngularJS应用中使用。<br>AngularJS中可以创建自己的服务，或使用内建服务。<br>常用内建服务：</p>
+<ul>
+<li>$location服务：允许对当前浏览器位置进行读写操作</li>
+<li>$http服务：服务向服务器发送请求，应用响应服务器传送过来的数据。</li>
+</ul>
+<h2 id="AngularJS-XMLHttpRequest"><a href="#AngularJS-XMLHttpRequest" class="headerlink" title="AngularJS XMLHttpRequest"></a>AngularJS XMLHttpRequest</h2><p>$http是AngularJS中的一个核心服务，用于读取远程服务器的数据。</p>
+<h2 id="AngularJS-select-选择框）"><a href="#AngularJS-select-选择框）" class="headerlink" title="AngularJS select(选择框）"></a>AngularJS select(选择框）</h2><p>AngularJS可以使用数组或者对象创建一个下拉列表选项。</p>
+<h2 id="AngularJS表格"><a href="#AngularJS表格" class="headerlink" title="AngularJS表格"></a>AngularJS表格</h2><p>使用ng-repeate指令可以完美的显示表格。</p>
+<h2 id="AngularJS-SQL"><a href="#AngularJS-SQL" class="headerlink" title="AngularJS SQL"></a>AngularJS SQL</h2><p>可以使用AngularJS读取数据库中的数据。</p>
+<h2 id="AngularJS-HTML-DOM"><a href="#AngularJS-HTML-DOM" class="headerlink" title="AngularJS HTML DOM"></a>AngularJS HTML DOM</h2><p>AngularJS为HTML DOM元素的属性提供了绑定应用数据的指令。<br>常用指令：</p>
+<ul>
+<li>ng-disabled用于直接绑定应用程序数据到HTML的disables属性。</li>
+<li>ng-show指令隐藏或者显示一个HTML元素。</li>
+</ul>
+<h2 id="AngularJS事件"><a href="#AngularJS事件" class="headerlink" title="AngularJS事件"></a>AngularJS事件</h2><p>常用的事件包括：</p>
+<ul>
+<li>点击事件ng-click</li>
+<li>设置应用部分是否可见ng-hide</li>
+</ul>
+<h2 id="AngularJS模块"><a href="#AngularJS模块" class="headerlink" title="AngularJS模块"></a>AngularJS模块</h2><p>模块定义了一个应用程序。<br>通过angular.module函数来创建模块。</p>
+<h2 id="AngularJS表单"><a href="#AngularJS表单" class="headerlink" title="AngularJS表单"></a>AngularJS表单</h2><p>AngularJS表单是输入控件的集合。</p>
+<h2 id="AngularJS输入验证"><a href="#AngularJS输入验证" class="headerlink" title="AngularJS输入验证"></a>AngularJS输入验证</h2><p>AngularJS表单和控件可以验证输入的数据。<br><strong>输入验证</strong>：AngularJS表单和控件提供了验证功能，并对用户输入的非法数据进行警告。<br>这里可以和bootstrap的输入验证结合起来使用。</p>
+<h2 id="AngularJS-API"><a href="#AngularJS-API" class="headerlink" title="AngularJS API"></a>AngularJS API</h2><p>AngularJS全局API用于执行常见的JS函数集合，在AngularJS中存在一些通用的API函数：</p>
+<ul>
+<li>angular.lowercase()：转换字符串为小写</li>
+<li>angular.uppercase:转换字符串为大写</li>
+<li>angular.isString()：判断给定的对象是否为字符串</li>
+<li>angular.isNumber()：判断给定的对象是否为数字。</li>
+</ul>
+<h2 id="AngularJS-Bootstrap"><a href="#AngularJS-Bootstrap" class="headerlink" title="AngularJS Bootstrap"></a>AngularJS Bootstrap</h2><p>AngularJS的首选样式表是bootstrap。<br>也就是说可以在AngularJS的代码中使用bootstrap。</p>
+<h2 id="AngularJS包含"><a href="#AngularJS包含" class="headerlink" title="AngularJS包含"></a>AngularJS包含</h2><p>在AngularJS中，可以在HTML中包含HTML文件。<br>包括服务端包含、客户端包含，还可以实现跨域包含。</p>
+<h2 id="AngularJS动画"><a href="#AngularJS动画" class="headerlink" title="AngularJS动画"></a>AngularJS动画</h2><p>AngularJS中可以配合CSS，通过引入angular-animate.min.js库实现动画效果。</p>
+<h2 id="AngularJS依赖注入"><a href="#AngularJS依赖注入" class="headerlink" title="AngularJS依赖注入"></a>AngularJS依赖注入</h2><p>依赖注入是一种软件设计模式，在该模式下，一个或更多的依赖被注入到另一个独立的对象中，然后成为该客户端状态的一部分。<br>该模式分离了客户端依赖本身行为的创建，使得程序设计变得松耦合，并遵循了依赖反转和单一职责原则。</p>
+<h2 id="AngularJS路由"><a href="#AngularJS路由" class="headerlink" title="AngularJS路由"></a>AngularJS路由</h2><p>AngularJS路由允许我们通过不同的URL访问不同的内容。</p>
+
+      
+
+      
+            <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+            <span class="btn-bg"></span>
+            <span class="btn-text">文章导航</span>
+            </p>
+            <div id="toc-article" class="toc-article">
+                <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+                <strong class="toc-title">文章目录</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AngularJS的作用"><span class="toc-number">1.1.</span> <span class="toc-text">AngularJS的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS表达式"><span class="toc-number">2.</span> <span class="toc-text">AngularJS表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS指令"><span class="toc-number">3.</span> <span class="toc-text">AngularJS指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#指令"><span class="toc-number">3.1.</span> <span class="toc-text">指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据绑定"><span class="toc-number">3.2.</span> <span class="toc-text">数据绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义指令"><span class="toc-number">3.3.</span> <span class="toc-text">自定义指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS模型"><span class="toc-number">4.</span> <span class="toc-text">AngularJS模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AngularJS-ng-model指令"><span class="toc-number">4.1.</span> <span class="toc-text">AngularJS ng-model指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS的Scope作用域"><span class="toc-number">5.</span> <span class="toc-text">AngularJS的Scope作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Scope的使用"><span class="toc-number">5.1.</span> <span class="toc-text">Scope的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS控制器"><span class="toc-number">6.</span> <span class="toc-text">AngularJS控制器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS过滤器"><span class="toc-number">7.</span> <span class="toc-text">AngularJS过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS服务"><span class="toc-number">8.</span> <span class="toc-text">AngularJS服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-XMLHttpRequest"><span class="toc-number">9.</span> <span class="toc-text">AngularJS XMLHttpRequest</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-select-选择框）"><span class="toc-number">10.</span> <span class="toc-text">AngularJS select(选择框）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS表格"><span class="toc-number">11.</span> <span class="toc-text">AngularJS表格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-SQL"><span class="toc-number">12.</span> <span class="toc-text">AngularJS SQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-HTML-DOM"><span class="toc-number">13.</span> <span class="toc-text">AngularJS HTML DOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS事件"><span class="toc-number">14.</span> <span class="toc-text">AngularJS事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS模块"><span class="toc-number">15.</span> <span class="toc-text">AngularJS模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS表单"><span class="toc-number">16.</span> <span class="toc-text">AngularJS表单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS输入验证"><span class="toc-number">17.</span> <span class="toc-text">AngularJS输入验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-API"><span class="toc-number">18.</span> <span class="toc-text">AngularJS API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-Bootstrap"><span class="toc-number">19.</span> <span class="toc-text">AngularJS Bootstrap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS包含"><span class="toc-number">20.</span> <span class="toc-text">AngularJS包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS动画"><span class="toc-number">21.</span> <span class="toc-text">AngularJS动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS依赖注入"><span class="toc-number">22.</span> <span class="toc-text">AngularJS依赖注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS路由"><span class="toc-number">23.</span> <span class="toc-text">AngularJS路由</span></a></li></ol>
+           </div>
+           <script type="text/javascript">
+            function showToc(){
+                var toc_article = document.getElementById("toc-article");
+                var show_toc_btn = document.getElementById("show-toc-btn");
+                toc_article.setAttribute("style","display:block");
+                show_toc_btn.setAttribute("style","display:none");
+                };
+            function showBtn(){
+                var toc_article = document.getElementById("toc-article");
+                var show_toc_btn = document.getElementById("show-toc-btn");
+                toc_article.setAttribute("style","display:none");
+                show_toc_btn.setAttribute("style","display:block");
+                };
+           </script>
+           
+        
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/08/你是如此耀眼，我又怎能向平凡低头/" class="archive-article-date">
-  	<time datetime="2018-04-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/08/你是如此耀眼，我又怎能向平凡低头/">你是如此耀眼，我又怎能向平凡低头</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">旧事</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/15/AngularJS学习/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/09/旧事，怎能不提/" class="archive-article-date">
-  	<time datetime="2018-03-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-09</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/01/01/我的博文总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          【置顶】我的博文汇总
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/08/你是如此耀眼，我又怎能向平凡低头/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">你是如此耀眼，我又怎能向平凡低头</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/09/旧事，怎能不提/">旧事，怎能不提</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">旧事</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AngularJS的作用"><span class="toc-number">1.1.</span> <span class="toc-text">AngularJS的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS表达式"><span class="toc-number">2.</span> <span class="toc-text">AngularJS表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS指令"><span class="toc-number">3.</span> <span class="toc-text">AngularJS指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#指令"><span class="toc-number">3.1.</span> <span class="toc-text">指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据绑定"><span class="toc-number">3.2.</span> <span class="toc-text">数据绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义指令"><span class="toc-number">3.3.</span> <span class="toc-text">自定义指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS模型"><span class="toc-number">4.</span> <span class="toc-text">AngularJS模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AngularJS-ng-model指令"><span class="toc-number">4.1.</span> <span class="toc-text">AngularJS ng-model指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS的Scope作用域"><span class="toc-number">5.</span> <span class="toc-text">AngularJS的Scope作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Scope的使用"><span class="toc-number">5.1.</span> <span class="toc-text">Scope的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS控制器"><span class="toc-number">6.</span> <span class="toc-text">AngularJS控制器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS过滤器"><span class="toc-number">7.</span> <span class="toc-text">AngularJS过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS服务"><span class="toc-number">8.</span> <span class="toc-text">AngularJS服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-XMLHttpRequest"><span class="toc-number">9.</span> <span class="toc-text">AngularJS XMLHttpRequest</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-select-选择框）"><span class="toc-number">10.</span> <span class="toc-text">AngularJS select(选择框）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS表格"><span class="toc-number">11.</span> <span class="toc-text">AngularJS表格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-SQL"><span class="toc-number">12.</span> <span class="toc-text">AngularJS SQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-HTML-DOM"><span class="toc-number">13.</span> <span class="toc-text">AngularJS HTML DOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS事件"><span class="toc-number">14.</span> <span class="toc-text">AngularJS事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS模块"><span class="toc-number">15.</span> <span class="toc-text">AngularJS模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS表单"><span class="toc-number">16.</span> <span class="toc-text">AngularJS表单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS输入验证"><span class="toc-number">17.</span> <span class="toc-text">AngularJS输入验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-API"><span class="toc-number">18.</span> <span class="toc-text">AngularJS API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-Bootstrap"><span class="toc-number">19.</span> <span class="toc-text">AngularJS Bootstrap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS包含"><span class="toc-number">20.</span> <span class="toc-text">AngularJS包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS动画"><span class="toc-number">21.</span> <span class="toc-text">AngularJS动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS依赖注入"><span class="toc-number">22.</span> <span class="toc-text">AngularJS依赖注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS路由"><span class="toc-number">23.</span> <span class="toc-text">AngularJS路由</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/08/待我准备好了，定潇洒出现/" class="archive-article-date">
-  	<time datetime="2018-03-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-08</time>
-</a>
-        </div>
-    	 
+  <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2158654"></script>
+<!-- UY END -->
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/08/待我准备好了，定潇洒出现/">他日，定当潇洒出现</a>
-    </h1>
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">旧事</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -304,9 +459,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: false,
