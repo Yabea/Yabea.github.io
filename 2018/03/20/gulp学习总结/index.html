@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="ben&#39;s blog">
 <meta property="og:description" content="gulp 是基于 node 实现 Web 前端自动化开发的工具，利用它能够极大的提高开发效率。本文将使用其对JS文件和CSS文件进行压缩，本文代码已上传github。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-16T10:29:19.288Z">
+<meta property="og:updated_time" content="2018-04-16T10:35:49.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gulp压缩文件学习总结">
 <meta name="twitter:description" content="gulp 是基于 node 实现 Web 前端自动化开发的工具，利用它能够极大的提高开发效率。本文将使用其对JS文件和CSS文件进行压缩，本文代码已上传github。">
@@ -198,22 +198,22 @@
 <p>// 压缩 js 文件<br>// 在命令行使用 gulp script 启动此任务<br>gulp.task(‘script’, function() {<br>    // 1. 找到文件<br>    gulp.src(‘*.js’)<br>    // 2. 压缩文件<br>        .pipe(uglify())<br>    // 3. 另存压缩后的文件<br>        .pipe(gulp.dest(‘dist/js’))<br>})</p>
 <p>// 在命令行使用 gulp auto 启动此任务<br>gulp.task(‘auto’, function () {<br>    // 监听文件修改，当文件被修改则执行 script 任务<br>    gulp.watch(‘*.js’, [‘script’])<br>})</p>
 <p>// 使用 gulp.task(‘default’) 定义默认任务<br>// 在命令行使用 gulp 启动 script 任务和 auto 任务<br>gulp.task(‘default’, [‘script’, ‘auto’])<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">编写完成该代码之后，在命令行中输入：</div></pre></td></tr></table></figure></p>
-<p>gulp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">即可在dist/js文件夹中生成压缩后的js文件。</div><div class="line"></div><div class="line">#### 报错</div><div class="line"></div><div class="line">**报错一**：</div></pre></td></tr></table></figure></p>
-<p>events.js:141<br>      throw er; // Unhandled ‘error’ event<br>      ^<br>GulpUglifyError: unable to minify JavaScript<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这是要由于JavaScript的语法问题所导致的，在es5的环境中使用了es6或者es7的语法，因此我们需要去找到具体是哪里的JS语法不正确。</div><div class="line">在根目录下安装 gulp-util 模块 用于打印日志：</div></pre></td></tr></table></figure></p>
-<p>npm install –save-dev gulp-util<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">并在gulpfile.js文件中添加代码：</div></pre></td></tr></table></figure></p>
-<p>var gutil = require(‘gulp-util’)</p>
-<p>.pipe(uglify())<br>.on(‘error’, function(err) {<br>    gutil.log(gutil.colors.red(‘[Error]’), err.toString());<br>    })<br>.pipe(gulp.dest(‘dist/js’))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这样使用**gulp**命令就打印JS文件中语法不正确的点，修改之后就可以正确压缩。</div><div class="line">除了这个还可以使用babel模块，使用es2015版本对代码进行检查，安装模块gulp-babel和babel-preset-es2015：</div></pre></td></tr></table></figure></p>
-<p>npm install –save-dev gulp-babel babel-preset-es2015<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">在gulpfile.js中添加代码：</div></pre></td></tr></table></figure></p>
-<p>var babel = require(‘gulp-babel’)</p>
-<p>.pipe(babel({<br>    presets: [‘es2015’] // es5检查机制<br>}))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这样，即可正确压缩。</div><div class="line"></div><div class="line">### 使用gulp压缩css文件</div><div class="line">#### 安装gulp-minify-css模块</div><div class="line">创建display/css文件夹，安装css需要使用gulp-minify-css模块，在命令行中输入:</div></pre></td></tr></table></figure></p>
+<p>gulp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">即可在dist/js文件夹中生成压缩后的js文件。</div><div class="line"></div><div class="line">### 使用gulp压缩css文件</div><div class="line">#### 安装gulp-minify-css模块</div><div class="line">创建display/css文件夹，安装css需要使用gulp-minify-css模块，在命令行中输入:</div></pre></td></tr></table></figure></p>
 <p>sudo npm install gulp-minify-css<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 编写JS文件</div><div class="line">接下来，编写JS文件，压缩css文件：</div></pre></td></tr></table></figure></p>
 <p>// 获取 gulp<br>var gulp = require(‘gulp’)</p>
 <p>// 获取 minify-css 模块（用于压缩 CSS）<br>var minifyCSS = require(‘gulp-minify-css’)</p>
 <p>// 压缩 css 文件<br>// 在命令行使用 gulp css 启动此任务<br>gulp.task(‘css’, function () {<br>    // 1. 找到文件<br>    gulp.src(‘*.css’)<br>    // 2. 压缩文件<br>        .pipe(minifyCSS())<br>    // 3. 另存为压缩文件<br>        .pipe(gulp.dest(‘dist/css’))<br>})</p>
 <p>// 在命令行使用 gulp auto 启动此任务<br>gulp.task(‘auto’, function () {<br>    // 监听文件修改，当文件被修改则执行 css 任务<br>    gulp.watch(‘*.css’, [‘css’])<br>});</p>
 <p>// 使用 gulp.task(‘default’) 定义默认任务<br>// 在命令行使用 gulp 启动 css 任务和 auto 任务<br>gulp.task(‘default’, [‘css’, ‘auto’])<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">在命令行中输入：</div></pre></td></tr></table></figure></p>
-<p>gulp<br>```</p>
-<p>即可在dist/css文件夹中生成压缩后的css文件。</p>
+<p>gulp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">即可在dist/css文件夹中生成压缩后的css文件。</div><div class="line"></div><div class="line">&lt;hr&gt;</div><div class="line">**分割线0416续更**</div><div class="line">&lt;hr&gt;</div><div class="line"></div><div class="line">### 压缩错误</div><div class="line"></div><div class="line">**报错一**：</div></pre></td></tr></table></figure></p>
+<p>events.js:141<br>      throw er; // Unhandled ‘error’ event<br>      ^<br>GulpUglifyError: unable to minify JavaScript<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这是要由于JavaScript的语法问题所导致的，在es5的环境中使用了es6或者es7的语法，因此我们需要去找到具体是哪里的JS语法不正确。</div><div class="line">在根目录下安装 gulp-util 模块 用于打印日志：</div></pre></td></tr></table></figure></p>
+<p>npm install –save-dev gulp-util<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">并在gulpfile.js文件中添加代码：</div></pre></td></tr></table></figure></p>
+<p>var gutil = require(‘gulp-util’)</p>
+<p>.pipe(uglify())<br>.on(‘error’, function(err) {<br>    gutil.log(gutil.colors.red(‘[Error]’), err.toString());<br>    })<br>.pipe(gulp.dest(‘dist/js’))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这样使用**gulp**命令就打印JS文件中语法不正确的点，修改之后就可以正确压缩。</div><div class="line">除了这个还可以使用babel模块，使用es2015版本对代码进行检查，安装模块gulp-babel和babel-preset-es2015：</div></pre></td></tr></table></figure></p>
+<p>npm install –save-dev gulp-babel babel-preset-es2015<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">在gulpfile.js中添加代码：</div></pre></td></tr></table></figure></p>
+<p>var babel = require(‘gulp-babel’)</p>
+<p>.pipe(babel({<br>    presets: [‘es2015’] // es5检查机制<br>}))<br>```</p>
+<p>这样，即可正确压缩。</p>
 <p>以上，是使用gulp压缩文件的总结。</p>
 
       
@@ -435,14 +435,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -451,11 +443,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
+                <a href="javascript:void(0)" class="js-tag color3">总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安全</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">剑指offer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
