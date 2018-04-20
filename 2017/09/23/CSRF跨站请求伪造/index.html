@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>CSRF跨站请求伪造 | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CSRF的全称为（Cross-site request forgery)，跨站请求伪造。其实就是可以劫持其它用户去进行一些请求。本文对该漏洞进行介绍。">
+  <meta name="description" content="CSRF的全称为（Cross-site request forgery)，跨站请求伪造。CSRF攻击者在用户已经登录目标网站之后，诱使用户访问一个攻击页面，利用目标网站对用户的信任，以用户身份在攻击页面对目标网站发起伪造用户操作的请求，达到攻击目的。">
 <meta name="keywords" content="安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSRF跨站请求伪造">
 <meta property="og:url" content="http://yoursite.com/2017/09/23/CSRF跨站请求伪造/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="CSRF的全称为（Cross-site request forgery)，跨站请求伪造。其实就是可以劫持其它用户去进行一些请求。本文对该漏洞进行介绍。">
+<meta property="og:description" content="CSRF的全称为（Cross-site request forgery)，跨站请求伪造。CSRF攻击者在用户已经登录目标网站之后，诱使用户访问一个攻击页面，利用目标网站对用户的信任，以用户身份在攻击页面对目标网站发起伪造用户操作的请求，达到攻击目的。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-29T14:45:49.932Z">
+<meta property="og:updated_time" content="2018-04-20T09:28:27.127Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSRF跨站请求伪造">
-<meta name="twitter:description" content="CSRF的全称为（Cross-site request forgery)，跨站请求伪造。其实就是可以劫持其它用户去进行一些请求。本文对该漏洞进行介绍。">
+<meta name="twitter:description" content="CSRF的全称为（Cross-site request forgery)，跨站请求伪造。CSRF攻击者在用户已经登录目标网站之后，诱使用户访问一个攻击页面，利用目标网站对用户的信任，以用户身份在攻击页面对目标网站发起伪造用户操作的请求，达到攻击目的。">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -172,9 +172,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>CSRF的全称为（Cross-site request forgery)，跨站请求伪造。<br>其实就是可以劫持其它用户去进行一些请求。本文对该漏洞进行介绍。</p>
+<p>CSRF的全称为（Cross-site request forgery)，跨站请求伪造。<br>CSRF攻击者在用户已经登录目标网站之后，诱使用户访问一个攻击页面，利用目标网站对用户的信任，以用户身份在攻击页面对目标网站发起伪造用户操作的请求，达到攻击目的。<br><a id="more"></a></p>
 </blockquote>
-<a id="more"></a>
 <h2 id="挖掘经验"><a href="#挖掘经验" class="headerlink" title="挖掘经验"></a>挖掘经验</h2><p>因为CSRF主要用于越权操作，因此所有的漏洞都出现在有权限控制的地方，像管理后台、会员中心、论坛帖子和交易管理等。<br>挖掘的<br>黑盒测试：先搭建好环境，然后打开几个有非静态操作的页面，抓包查看有没有token，如果没有token，再请求这个页面，并且不带referer，如果返回的数据还是一样的，那么就很有可能存在CSRF漏洞。<br>白盒测试：在核心功能中，搜索token，查看这些文件中有没有验证token和referer。</p>
 <h2 id="漏洞防范"><a href="#漏洞防范" class="headerlink" title="漏洞防范"></a>漏洞防范</h2><p>防止CSRF最主要的是解决可信的问题，也就是说，即使是管理员提交到服务器上的数据，都不一定是完全可信的。针对CSRF的防御一般可以分为两点：</p>
 <ol>
@@ -418,15 +417,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">剑指offer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">剑指offer</a>
               </li>
              
               <li class="article-tag-list-item">
