@@ -54,7 +54,7 @@
 		  <h1 class="header-author"><a href="/">Yabea</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">简单自然 细水长流</p>
+		<p class="header-subtitle">来日方长</p>
 		
 
 		<nav class="header-menu">
@@ -74,11 +74,17 @@
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">搜索文章</a>
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+            
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
 				
 					<a class="github" target="_blank" href="https://github.com/Yabea" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="rss" target="_blank" href="http://www.cnblogs.com/ybjourney/" title="rss"><i class="icon-rss"></i></a>
 		        
 					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/yang-ben-85/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
@@ -104,7 +110,7 @@
 			  <h1 class="header-author js-header-author">Yabea</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>简单自然 细水长流<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>来日方长<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -120,6 +126,8 @@
 				<div class="social">
 					
 						<a class="github" target="_blank" href="https://github.com/Yabea" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="rss" target="_blank" href="http://www.cnblogs.com/ybjourney/" title="rss"><i class="icon-rss"></i></a>
 			        
 						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/yang-ben-85/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
@@ -382,13 +390,21 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
       
     
+      
+      
+      
+    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">搜索文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">搜索文章</a></li>
+      
+        
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -409,15 +425,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">总结</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -485,6 +501,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">小杨同学，&lt;br&gt;喜欢大海和狗，&lt;br&gt;热爱生活，简单自然,细水长流 &lt;br&gt;</div>
+  	  	
+    	</section>
     
   </div>
   
