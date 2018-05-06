@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>【剑指offer】斐波拉契数列 | ben&#39;s blog</title>
+  <title>Python调试模块pdb | ben&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用Python实现斐波拉契数列">
-<meta name="keywords" content="剑指offer">
+  <meta name="description" content="刚才看到了一个比较好用的调试模块！调试在开发过程中至关重要，一般简单的程序可以通过加入print或者log来进行调试，但是对于相对复杂的程序，可以使用Python的pdb模块，它可以进行单步调试并且很方便查看变量的值，从而对问题进行排查。">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【剑指offer】斐波拉契数列">
-<meta property="og:url" content="http://yoursite.com/2018/04/07/斐波拉契数列/index.html">
+<meta property="og:title" content="Python调试模块pdb">
+<meta property="og:url" content="http://yoursite.com/2018/05/06/pdb/index.html">
 <meta property="og:site_name" content="ben&#39;s blog">
-<meta property="og:description" content="使用Python实现斐波拉契数列">
+<meta property="og:description" content="刚才看到了一个比较好用的调试模块！调试在开发过程中至关重要，一般简单的程序可以通过加入print或者log来进行调试，但是对于相对复杂的程序，可以使用Python的pdb模块，它可以进行单步调试并且很方便查看变量的值，从而对问题进行排查。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-07T16:00:01.695Z">
+<meta property="og:updated_time" content="2018-05-06T15:12:28.582Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【剑指offer】斐波拉契数列">
-<meta name="twitter:description" content="使用Python实现斐波拉契数列">
+<meta name="twitter:title" content="Python调试模块pdb">
+<meta name="twitter:description" content="刚才看到了一个比较好用的调试模块！调试在开发过程中至关重要，一般简单的程序可以通过加入print或者log来进行调试，但是对于相对复杂的程序，可以使用Python的pdb模块，它可以进行单步调试并且很方便查看变量的值，从而对问题进行排查。">
   
     <link rel="alternative" href="/atom.xml" title="ben&#39;s blog" type="application/atom+xml">
   
@@ -153,21 +153,21 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-斐波拉契数列" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-pdb" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      【剑指offer】斐波拉契数列
+      Python调试模块pdb
     </h1>
   
 
 		
         
-        <a href="/2018/04/07/斐波拉契数列/" class="archive-article-date">
-  	<time datetime="2018-04-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-07</time>
+        <a href="/2018/05/06/pdb/" class="archive-article-date">
+  	<time datetime="2018-05-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-06</time>
 </a>
         
 
@@ -175,27 +175,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>使用Python实现斐波拉契数列</p>
-</blockquote>
+        <p><strong>刚才看到了一个比较好用的调试模块！</strong><br>调试在开发过程中至关重要，一般简单的程序可以通过加入print或者log来进行调试，但是对于相对复杂的程序，可以使用Python的pdb模块，它可以进行单步调试并且很方便查看变量的值，从而对问题进行排查。</p>
 <a id="more"></a>
-<p>## </p>
-<h3 id="斐波拉契数列"><a href="#斐波拉契数列" class="headerlink" title="斐波拉契数列"></a>斐波拉契数列</h3><p><strong>描述</strong>:输入一个整数n，请你输出斐波那契数列的第n项。<br><strong>递归实现</strong><br>最常见的斐波拉契数列的实现就是通过递归：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def fibonacci(n):</div><div class="line">    if n &lt; 1:</div><div class="line">        return 0</div><div class="line">    if n == 1:</div><div class="line">        return 1</div><div class="line">    return fibonacci(n-1) + fibonacci(n-2)</div></pre></td></tr></table></figure></p>
-<p>但是，递归算法的效率并不高，时间复杂度呈指数递增，可以达到O(2^n)，所以如何优化呢？<br><strong>优化</strong><br>递归算法的时间复杂度之所以这么高，是因为重复的计算太多，那么优化可以理解为避免重复的计算，因此，我们可以将已经计算得到的数据保存起来。<br>利用在该问题中，我们可以通过从下往上计算，根据f(0）和f(1)算出f(2)，以此类推计算出第n项，这种思路的时间复杂度是O(n)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def fibonacci(n):</div><div class="line">    if n &lt; 1:</div><div class="line">        return 0</div><div class="line">    result = []</div><div class="line">    for i in range(n):</div><div class="line">        if i &lt; 2:</div><div class="line">            result.append(1)</div><div class="line">        else:</div><div class="line">            result.append(result[-1] + result[-2])</div><div class="line">    return result</div></pre></td></tr></table></figure></p>
-<h3 id="斐波拉契数列的应用"><a href="#斐波拉契数列的应用" class="headerlink" title="斐波拉契数列的应用"></a>斐波拉契数列的应用</h3><h4 id="跳台阶问题"><a href="#跳台阶问题" class="headerlink" title="跳台阶问题"></a>跳台阶问题</h4><p><strong>描述</strong>：一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。<br><strong>分析</strong></p>
-<ul>
-<li>n=1时，只有一种跳法；</li>
-<li>n=2时，有两种跳法；</li>
-<li>n&gt;2时，第一次跳的时候就有两种不同的选择，如果第一次跳1级台阶，则剩下的台阶为f(n-1)，若第一次跳2级台阶，则剩下的台阶为f(n-2)。因此跳n级台阶的不同跳法的总数为f(n) = f(n-1) + f(n-2)，也就是斐波拉契数列。</li>
-</ul>
-<h4 id="变态跳台阶问题"><a href="#变态跳台阶问题" class="headerlink" title="变态跳台阶问题"></a>变态跳台阶问题</h4><p><strong>描述</strong>：一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。<br><strong>分析</strong></p>
-<ul>
-<li>当n=1时，有一种跳法</li>
-<li>当n=2时，有两种跳法</li>
-<li>当n&gt;2时，第一次有n种跳法，跳1级，则剩下的跳法是f(n-1);跳2级，则剩下的跳法是f(n-2);跳3级，则剩下的跳法是f(n-3)…</li>
-</ul>
-<p>所以，f(n)=f(n-1)+f(n-2)+f(n-3)+…+f(1)<br>可得出：f(n) = 2 * f(n-1)<br>用数学归纳法可以得到f(n) = 2^(n-1)</p>
-<p><strong>实现</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import math</div><div class="line"></div><div class="line">def jumpFloorII(number):</div><div class="line">    # write code here</div><div class="line">    if number &lt;= 1:</div><div class="line">        return 1</div><div class="line">    return pow(2, number-1)</div></pre></td></tr></table></figure></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>通过使用pdb的set_trace()方法，举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def add(a, b):</div><div class="line">    return a + b</div><div class="line"></div><div class="line">def cal(a, b):</div><div class="line">    pdb.set_trace()</div><div class="line">    c = add(a, b)</div><div class="line">    print c</div><div class="line"></div><div class="line">if __name__ == &quot;__main__&quot;:</div><div class="line">    cal(3, 4)</div></pre></td></tr></table></figure></p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">break或b</td>
+<td style="text-align:center">设置断点</td>
+</tr>
+<tr>
+<td style="text-align:center">continue或c</td>
+<td style="text-align:center">继续执行代码，或者跳到下一个断点</td>
+</tr>
+<tr>
+<td style="text-align:center">list 或 l</td>
+<td style="text-align:center">查看当前行的代码段</td>
+</tr>
+<tr>
+<td style="text-align:center">step 或 s</td>
+<td style="text-align:center">进入函数</td>
+</tr>
+<tr>
+<td style="text-align:center">return 或 r</td>
+<td style="text-align:center">执行代码直到从当前函数返回</td>
+</tr>
+<tr>
+<td style="text-align:center">exit 或 q</td>
+<td style="text-align:center">中止并退出</td>
+</tr>
+<tr>
+<td style="text-align:center">next 或 n</td>
+<td style="text-align:center">执行下一行</td>
+</tr>
+<tr>
+<td style="text-align:center">p 或!</td>
+<td style="text-align:center">打印变量的值</td>
+</tr>
+</tbody>
+</table>
 
       
 
@@ -211,7 +235,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">剑指offer</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -267,7 +291,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/07/斐波拉契数列/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/06/pdb/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -281,18 +305,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/08/你是如此耀眼，我又怎能向平凡低头/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/05/06/args和kwargs的区别/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          你是如此耀眼，我又怎能向平凡低头
+          Python中的*args和**kwargs
         
       </div>
     </a>
   
   
-    <a href="/2018/03/20/链表/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【剑指offer】关于链表</div>
+    <a href="/2018/04/16/Python中的上下文管理器和with语句/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python中的上下文管理器和with语句</div>
       <i class="icon-circle-right"></i>
     </a>
   
